@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sagi Events — прототип</title>
+<style>
+  :root{
+    --bg:#0f1020; --card:#1a1c33; --card2:#222542; --line:#2c2f52;
+    --txt:#eef0ff; --mut:#9aa0c8; --accent:#7c6cff; --accent2:#ff7a9c;
+    --ok:#36d399; --warn:#ffcf5c; --radius:18px; color-scheme:dark;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:radial-gradient(1200px 600px at 80% -10%,#241b4a 0,transparent 60%),
+    radial-gradient(900px 500px at -10% 20%,#33214a 0,transparent 55%),var(--bg);
+    color:var(--txt);min-height:100vh;display:flex;justify-content:center;padding:24px 12px 90px}
+  .shell{width:100%;max-width:430px}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:6px 6px 14px}
+  .brand{font-weight:800;font-size:22px;letter-spacing:.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .brand small{display:block;font-size:10px;font-weight:600;color:var(--mut);letter-spacing:2px;-webkit-text-fill-color:var(--mut)}
+  .topicons{display:flex;gap:8px}
+  .icobtn{position:relative;width:42px;height:42px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer}
+  .icobtn .dot{position:absolute;top:8px;right:9px;width:9px;height:9px;border-radius:50%;background:var(--accent2);border:2px solid var(--card)}
+  .screen{display:none;animation:fade .25s ease}
+  .screen.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:14px}
+  .hero{position:relative;border-radius:24px;overflow:hidden;padding:22px;background:linear-gradient(135deg,#7c6cff,#ff7a9c);margin-bottom:16px}
+  .hero h2{font-size:22px}
+  .hero p{opacity:.9;font-size:13px;margin-top:4px}
+  .avatar{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;background:rgba(255,255,255,.25);border:2px solid rgba(255,255,255,.5)}
+  .row{display:flex;gap:12px;align-items:center}
+  .stat{flex:1;text-align:center}
+  .stat b{font-size:18px;display:block}
+  .stat span{font-size:11px;color:var(--mut)}
+  h3{font-size:15px;margin:4px 2px 10px;display:flex;justify-content:space-between;align-items:center}
+  h3 .link{font-size:12px;color:var(--accent);cursor:pointer;font-weight:600}
+  .ev{display:flex;gap:12px;align-items:center;padding:12px;border-radius:14px;background:var(--card2);margin-bottom:10px;cursor:pointer;border:1px solid transparent;transition:.15s}
+  .ev:hover{border-color:var(--accent)}
+  .emoji{width:46px;height:46px;border-radius:12px;background:#2e3160;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+  .ev .meta{flex:1;min-width:0}
+  .ev .meta b{font-size:14px}
+  .ev .meta span{font-size:12px;color:var(--mut);display:block}
+  .pill{font-size:11px;padding:4px 9px;border-radius:20px;background:#312a63;color:#cabfff;white-space:nowrap}
+  .pill.soon{background:#5a2740;color:#ffc0d2}
+  .btn{display:block;width:100%;text-align:center;padding:13px;border-radius:14px;border:none;font-size:14px;font-weight:700;cursor:pointer;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;margin-top:6px}
+  .btn.sec{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
+  .btn.danger{background:transparent;color:#ff8fa6;border:1px solid #5a2740}
+  .btn.tiny{display:inline-block;width:auto;padding:8px 14px;font-size:12px;margin:0}
+  input,select,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card2);color:var(--txt);font-size:14px;font-family:inherit;margin-bottom:10px}
+  label{font-size:12px;color:var(--mut);margin:2px 2px 6px;display:block}
+  .seg{display:flex;background:var(--card2);border-radius:12px;padding:4px;gap:4px;margin-bottom:14px}
+  .seg button{flex:1;border:none;background:transparent;color:var(--mut);padding:8px;border-radius:9px;font-size:12px;font-weight:600;cursor:pointer}
+  .seg button.on{background:var(--accent);color:#fff}
+  .wish{display:flex;gap:12px;padding:12px;border-radius:14px;background:var(--card2);margin-bottom:10px;align-items:center}
+  .wish .ph{width:50px;height:50px;border-radius:11px;background:#2e3160;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+  .wish .meta{flex:1;min-width:0}
+  .wish .meta b{font-size:14px}
+  .wish .meta span{font-size:12px;color:var(--mut)}
+  .reserved{opacity:.55}
+  .reserved .meta b{text-decoration:line-through}
+  .progress{height:7px;border-radius:5px;background:#2e3160;overflow:hidden;margin-top:7px}
+  .progress i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+  .empty{text-align:center;padding:30px 18px;border:1.5px dashed var(--line);border-radius:18px;margin-bottom:14px}
+  .empty .big{font-size:40px;margin-bottom:10px}
+  .empty b{font-size:15px;display:block;margin-bottom:6px}
+  .empty p{font-size:12.5px;color:var(--mut);line-height:1.5;margin-bottom:14px}
+  .tabbar{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:center;background:rgba(15,16,32,.85);backdrop-filter:blur(12px);border-top:1px solid var(--line);z-index:10}
+  .tabbar .inner{width:100%;max-width:430px;display:flex}
+  .tab{flex:1;text-align:center;padding:11px 0 14px;color:var(--mut);font-size:10px;cursor:pointer;border:none;background:none}
+  .tab .ic{font-size:20px;display:block;margin-bottom:2px;filter:grayscale(1) opacity(.7)}
+  .tab.on{color:var(--accent)}
+  .tab.on .ic{filter:none}
+  .fab{position:fixed;bottom:78px;left:50%;transform:translateX(calc(215px - 100%));width:56px;height:56px;border-radius:50%;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:28px;cursor:pointer;box-shadow:0 8px 24px rgba(124,108,255,.5);z-index:9}
+  .modal{position:fixed;inset:0;background:rgba(8,8,18,.7);display:none;align-items:flex-end;justify-content:center;z-index:50}
+  .modal.show{display:flex}
+  .sheet{width:100%;max-width:430px;background:var(--card);border-radius:24px 24px 0 0;padding:20px;max-height:88vh;overflow:auto;animation:up .25s ease}
+  @keyframes up{from{transform:translateY(40px)}to{transform:none}}
+  .sheet .grab{width:40px;height:4px;border-radius:3px;background:var(--line);margin:0 auto 16px}
+  .chip{display:inline-block;padding:6px 12px;border-radius:20px;background:var(--card2);border:1px solid var(--line);font-size:12px;margin:0 6px 8px 0;cursor:pointer}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .toast{position:fixed;bottom:150px;left:50%;transform:translateX(-50%) translateY(20px);background:#2a2d52;border:1px solid var(--accent);color:#fff;padding:12px 18px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition:.3s;z-index:99;max-width:90%;text-align:center}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .guest{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+  .gav{width:34px;height:34px;border-radius:50%;background:#2e3160;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+  .tag{font-size:10px;padding:3px 8px;border-radius:8px;margin-left:auto}
+  .tag.yes{background:#16412f;color:var(--ok)}
+  .tag.no{background:#45222c;color:#ff9fb2}
+  .tag.maybe{background:#453a1c;color:var(--warn)}
+  .muted{color:var(--mut);font-size:12px;line-height:1.5}
+  .note{font-size:11px;color:var(--mut);background:var(--card2);border-radius:10px;padding:9px 11px;margin-top:8px}
+  /* онбординг */
+  .onb{position:fixed;inset:0;z-index:200;display:none;background:
+    radial-gradient(900px 500px at 80% 0,#3a2570 0,transparent 60%),
+    radial-gradient(700px 500px at 0 100%,#5a2a4d 0,transparent 55%),var(--bg);
+    overflow:auto;padding:30px 22px;justify-content:center}
+  .onb.show{display:flex}
+  .onb .inner{width:100%;max-width:400px;margin:auto;text-align:center}
+  .ostep{display:none;animation:fade .3s ease}
+  .ostep.active{display:block}
+  .obrand{font-size:40px;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:6px}
+  .feat{display:flex;gap:12px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px;margin-bottom:10px}
+  .feat .fi{font-size:24px}
+  .feat b{font-size:14px}.feat span{font-size:12px;color:var(--mut)}
+  .av-pick{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:12px}
+  .av-pick div{width:46px;height:46px;border-radius:50%;background:var(--card2);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer}
+  .av-pick div.on{border-color:var(--accent);background:#312a63}
+  .dots{display:flex;gap:6px;justify-content:center;margin:18px 0}
+  .dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}
+  .dots i.on{background:var(--accent);width:20px;border-radius:4px}
+  .demobar{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:150;background:rgba(26,28,51,.92);border:1px solid var(--accent);border-radius:30px;padding:5px;display:flex;gap:4px;font-size:11px;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+  .demobar button{border:none;background:transparent;color:var(--mut);padding:6px 12px;border-radius:24px;font-size:11px;font-weight:700;cursor:pointer}
+  .demobar button.on{background:var(--accent);color:#fff}
+</style>
+</head>
+<body>
+
+<!-- демо-переключатель режимов -->
+<div class="demobar">
+  <button id="dmNew" class="on" onclick="startOnboarding()">👋 Новый пользователь</button>
+  <button id="dmActive" onclick="loadActive()">⚡ Активный (с данными)</button>
+</div>
+
+<!-- ===== ОНБОРДИНГ ===== -->
+<div class="onb" id="onb"><div class="inner">
+
+  <!-- шаг 1: приветствие -->
+  <div class="ostep active" id="o1">
+    <div class="obrand">Sagi Events</div>
+    <p class="muted" style="margin-bottom:24px">Никогда не забывай о праздниках близких и получай подарки, которые правда хочешь.</p>
+    <div class="feat"><div class="fi">🎂</div><div><b>Дни рождения друзей</b><span>Напомним заранее — не пропустишь</span></div></div>
+    <div class="feat"><div class="fi">🎁</div><div><b>Свой вишлист</b><span>Друзья дарят нужное, без дублей</span></div></div>
+    <div class="feat"><div class="fi">🎉</div><div><b>Свои события</b><span>Создай ивент и позови гостей</span></div></div>
+    <button class="btn" style="margin-top:18px" onclick="ostep(2)">Создать аккаунт</button>
+    <p class="muted" style="margin-top:12px">Это займёт меньше минуты. Уже есть аккаунт? <span style="color:var(--accent);cursor:pointer" onclick="ostep(2)">Войти</span></p>
+  </div>
+
+  <!-- шаг 2: профиль -->
+  <div class="ostep" id="o2">
+    <div class="dots"><i class="on"></i><i></i><i></i></div>
+    <h2 style="margin-bottom:4px">Создай профиль</h2>
+    <p class="muted" style="margin-bottom:18px">Так друзья тебя узнают</p>
+    <label>Выбери аватар</label>
+    <div class="av-pick" id="avPick">
+      <div class="on">🙂</div><div>😎</div><div>🦊</div><div>🐱</div><div>🚀</div><div>🌟</div><div>🎈</div><div>👑</div>
+    </div>
+    <label>Имя</label><input id="obName" placeholder="Как тебя зовут">
+    <label>Город</label><input id="obCity" placeholder="Алматы">
+    <button class="btn" onclick="saveProfile()">Дальше</button>
+  </div>
+
+  <!-- шаг 3: день рождения -->
+  <div class="ostep" id="o3">
+    <div class="dots"><i></i><i class="on"></i><i></i></div>
+    <h2 style="margin-bottom:4px">Когда твой день рождения? 🎂</h2>
+    <p class="muted" style="margin-bottom:18px">Друзья получат напоминание. Год можно скрыть.</p>
+    <label>Дата рождения</label><input id="obBday" type="date">
+    <label><input type="checkbox" id="obHideYear" style="width:auto;margin-right:8px" checked>Скрыть год от друзей</label>
+    <button class="btn" onclick="ostep(4)">Дальше</button>
+    <button class="btn sec" onclick="ostep(4)">Пропустить</button>
+  </div>
+
+  <!-- шаг 4: друзья -->
+  <div class="ostep" id="o4">
+    <div class="dots"><i></i><i></i><i class="on"></i></div>
+    <h2 style="margin-bottom:4px">Добавь друзей 👥</h2>
+    <p class="muted" style="margin-bottom:18px">Чтобы видеть их праздники и дарить подарки</p>
+    <div class="card" style="text-align:left">
+      <div class="row" style="margin-bottom:10px"><div class="gav">📇</div><div style="flex:1"><b style="font-size:13px">Из контактов</b><div class="muted">Найти друзей, кто уже в Sagi Events</div></div><button class="btn tiny" onclick="toast('Демо: поиск по контактам')">Найти</button></div>
+      <div class="row"><div class="gav">🔗</div><div style="flex:1"><b style="font-size:13px">Пригласить по ссылке</b><div class="muted">sagi.events/u/sagi</div></div><button class="btn tiny" onclick="toast('Ссылка скопирована 🔗')">Копир.</button></div>
+    </div>
+    <button class="btn" onclick="finishOnboarding()">Перейти в приложение</button>
+    <button class="btn sec" onclick="finishOnboarding()">Пропустить пока</button>
+  </div>
+
+</div></div>
+
+<div class="shell">
+  <div class="topbar">
+    <div class="brand">Sagi Events<small>СОБЫТИЯ · ВИШЛИСТЫ</small></div>
+    <div class="topicons">
+      <div class="icobtn" onclick="go('notif')" id="bell">🔔</div>
+      <div class="icobtn" onclick="open_('mAccount')">⚙️</div>
+    </div>
+  </div>
+
+  <!-- ====== ЛЕНТА ====== -->
+  <div id="feed" class="screen active">
+    <div class="hero" id="feedHero"></div>
+    <div id="feedBody"></div>
+  </div>
+
+  <!-- ====== ПРОФИЛЬ ====== -->
+  <div id="profile" class="screen">
+    <div class="card" style="text-align:center">
+      <div class="avatar" id="pfAv" style="margin:0 auto 12px">🙂</div>
+      <h2 style="font-size:20px" id="pfName">Имя</h2>
+      <p class="muted" id="pfSub">Город</p>
+      <div class="row" style="margin-top:16px">
+        <div class="stat"><b id="pfFriends">0</b><span>друзей</span></div>
+        <div class="stat"><b id="pfEvents">0</b><span>события</span></div>
+        <div class="stat"><b id="pfWishes">0</b><span>желаний</span></div>
+      </div>
+      <button class="btn sec" style="margin-top:14px" onclick="open_('mAccount')">Настройки и аккаунт</button>
+    </div>
+    <h3>Мой вишлист <span class="link" onclick="go('wishlist')">открыть →</span></h3>
+    <div id="pfWishBlock"></div>
+    <h3>Приватность</h3>
+    <div class="card">
+      <label>Кто видит мой профиль</label>
+      <select><option>Только друзья</option><option>Публично</option><option>По ссылке</option></select>
+      <label>Дату рождения видят</label>
+      <select><option>Друзья (без года)</option><option>Все</option><option>Никто</option></select>
+    </div>
+  </div>
+
+  <!-- ====== ВИШЛИСТ ====== -->
+  <div id="wishlist" class="screen">
+    <div class="hero" style="background:linear-gradient(135deg,#ff7a9c,#7c6cff)">
+      <h2>🎁 Мой вишлист</h2>
+      <p id="wishHeroSub">Добавь то, что хочешь получить в подарок</p>
+    </div>
+    <div class="seg" id="wishSeg">
+      <button class="on" onclick="wishView(this,'mine')">Мой список</button>
+      <button onclick="wishView(this,'friend')">Глазами друга</button>
+    </div>
+    <div id="wishMine">
+      <div id="wishItems"></div>
+      <button class="btn" onclick="openAdd()">＋ Добавить желание</button>
+      <div class="note" id="wishNote">💡 «Глазами друга» — как список видит гость: можно зарезервировать подарок или скинуться на общий, ты этого не увидишь.</div>
+    </div>
+    <div id="wishFriend" style="display:none">
+      <div class="muted" style="margin-bottom:12px">Так твой вишлист видит друг. Он может забронировать подарок или вложиться в совместный.</div>
+      <div id="wishFriendItems"></div>
+    </div>
+  </div>
+
+  <!-- ====== СОБЫТИЕ ====== -->
+  <div id="event" class="screen">
+    <div class="hero" style="background:linear-gradient(135deg,#36d399,#7c6cff)">
+      <h2 id="evTitle">🎉 Новоселье у Дианы</h2>
+      <p id="evWhen">Сб, 28 июня · 19:00 · ул. Абая 10</p>
+    </div>
+    <div class="card">
+      <div class="row" style="justify-content:space-between">
+        <div><b id="evCount">14</b> <span class="muted">придут</span></div>
+        <div><span class="muted">осталось</span> <b id="evDays">8 дней</b></div>
+      </div>
+    </div>
+    <h3>Ты идёшь?</h3>
+    <div class="card">
+      <div class="seg" style="margin:0">
+        <button onclick="rsvp(this,'Приду')">✅ Приду</button>
+        <button onclick="rsvp(this,'Возможно')">🤔 Возможно</button>
+        <button onclick="rsvp(this,'Не приду')">✖ Не приду</button>
+      </div>
+      <button class="btn sec" style="margin-top:12px" onclick="toast('Демо: добавлено в календарь 📅')">＋ В календарь</button>
+    </div>
+    <h3>Ссылки и ресурсы</h3>
+    <div id="resources"></div>
+    <h3>Гости <span class="link" onclick="toast('Демо: QR-чек-ин на входе')">QR чек-ин</span></h3>
+    <div class="card" id="guests"></div>
+    <h3>Что принести <span class="link" onclick="toast('Демо: записаться')">записаться</span></h3>
+    <div class="card" id="checklist"></div>
+    <h3>Фотоальбом <span class="link" onclick="toast('Демо: загрузить фото')">＋ фото</span></h3>
+    <div class="card" id="album"></div>
+    <h3>Обсуждение</h3>
+    <div class="card" id="wall"></div>
+  </div>
+
+  <!-- ====== УВЕДОМЛЕНИЯ ====== -->
+  <div id="notif" class="screen">
+    <h3>Уведомления</h3>
+    <div id="notifList"></div>
+  </div>
+</div>
+
+<button class="fab" onclick="openCreate()">＋</button>
+
+<!-- таб-бар -->
+<div class="tabbar"><div class="inner">
+  <button class="tab on" data-s="feed" onclick="go('feed',this)"><span class="ic">🏠</span>Лента</button>
+  <button class="tab" data-s="wishlist" onclick="go('wishlist',this)"><span class="ic">🎁</span>Вишлист</button>
+  <button class="tab" data-s="profile" onclick="go('profile',this)"><span class="ic">👤</span>Профиль</button>
+  <button class="tab" data-s="notif" onclick="go('notif',this)"><span class="ic">🔔</span>Уведомл.</button>
+</div></div>
+
+<!-- модалка: аккаунт / настройки / выход -->
+<div class="modal" id="mAccount">
+  <div class="sheet">
+    <div class="grab"></div>
+    <div class="row" style="margin-bottom:16px">
+      <div class="avatar" id="acAv" style="width:50px;height:50px;font-size:22px">🙂</div>
+      <div><b id="acName">Имя</b><div class="muted" id="acMail">business@sagibonus.com</div></div>
+    </div>
+    <div class="ev" onclick="toast('Демо: редактировать профиль')"><div class="emoji">✏️</div><div class="meta"><b>Редактировать профиль</b></div><span class="pill">→</span></div>
+    <div class="ev" onclick="toast('Демо: приватность')"><div class="emoji">🔒</div><div class="meta"><b>Приватность</b></div><span class="pill">→</span></div>
+    <div class="ev" onclick="toast('Демо: уведомления')"><div class="emoji">🔔</div><div class="meta"><b>Уведомления</b></div><span class="pill">→</span></div>
+    <div class="ev" onclick="toast('Демо: язык — Русский / Қазақша')"><div class="emoji">🌐</div><div class="meta"><b>Язык</b><span>Русский</span></div><span class="pill">→</span></div>
+    <div class="ev" onclick="toast('Демо: помощь и поддержка')"><div class="emoji">❓</div><div class="meta"><b>Помощь</b></div><span class="pill">→</span></div>
+    <button class="btn danger" style="margin-top:8px" onclick="logout()">Выйти</button>
+    <button class="btn sec" onclick="close_('mAccount')">Закрыть</button>
+  </div>
+</div>
+
+<!-- модалка: создать ивент -->
+<div class="modal" id="mCreate">
+  <div class="sheet">
+    <div class="grab"></div>
+    <h3>Создать событие</h3>
+    <label>Тип</label>
+    <div id="evTypes">
+      <span class="chip on">🎂 День рождения</span><span class="chip">🎉 Праздник</span>
+      <span class="chip">🏠 Новоселье</span><span class="chip">💍 Свадьба</span><span class="chip">🍷 Встреча</span>
+    </div>
+    <label>Название</label><input placeholder="Например: Мой день рождения">
+    <label>Дата и время</label><input type="datetime-local">
+    <label>Место</label><input placeholder="Адрес или ссылка на онлайн">
+    <label>Приватность</label>
+    <select><option>По приглашению</option><option>По ссылке</option><option>Открытое</option></select>
+    <label>Ссылки и ресурсы для гостей</label>
+    <div id="resTypes">
+      <span class="chip on">📍 Карта / Google Maps</span><span class="chip">📹 Видеозвонок (Zoom/Meet)</span>
+      <span class="chip">🎵 Плейлист (Spotify)</span><span class="chip on">📁 Google Drive (фото)</span>
+      <span class="chip">🎁 Мой вишлист</span><span class="chip">👗 Дресс-код</span>
+    </div>
+    <input id="resLink" placeholder="Вставь ссылку — добавим в карточку события">
+    <div class="note">💡 Гости увидят все ссылки на странице события: маршрут на карте, ссылку на видеозвонок, общий Google Drive с фото, плейлист и твой вишлист.</div>
+    <button class="btn" onclick="createEvent()">Создать и пригласить</button>
+    <button class="btn sec" onclick="close_('mCreate')">Отмена</button>
+  </div>
+</div>
+
+<!-- модалка: пригласить -->
+<div class="modal" id="mInvite">
+  <div class="sheet">
+    <div class="grab"></div>
+    <h3>Пригласить гостей</h3>
+    <div class="muted" style="margin-bottom:12px">Событие создано 🎉 Позови друзей.</div>
+    <label>Друзья в Sagi Events</label>
+    <div id="inviteFriends"></div>
+    <label style="margin-top:8px">Или ссылка-приглашение</label>
+    <div class="row">
+      <input id="inviteLink" value="sagi.events/e/aZ8kq" readonly style="margin:0">
+      <button class="btn tiny" onclick="toast('Ссылка скопирована 🔗')">Копир.</button>
+    </div>
+    <button class="btn" style="margin-top:14px" onclick="close_('mInvite');toast('Приглашения отправлены ✉️')">Готово</button>
+  </div>
+</div>
+
+<!-- модалка: добавить желание -->
+<div class="modal" id="mAdd">
+  <div class="sheet">
+    <div class="grab"></div>
+    <h3>Добавить желание</h3>
+    <label>Ссылка на товар (подтянем фото и цену)</label>
+    <input id="addLink" placeholder="kaspi.kz/... или вставь ссылку">
+    <label>Название</label><input id="addName" placeholder="Беспроводные наушники">
+    <label>Цена, ₸</label><input id="addPrice" placeholder="89 000">
+    <label>Приоритет</label>
+    <select id="addPrio"><option>🔥 Очень хочу</option><option>Хочу</option><option>Было бы приятно</option></select>
+    <label>Заметка</label><input id="addNote" placeholder="Цвет чёрный">
+    <label><input type="checkbox" id="addJoint" style="width:auto;margin-right:8px">Разрешить совместный подарок (скидываемся)</label>
+    <button class="btn" onclick="addWish()">Добавить в вишлист</button>
+    <button class="btn sec" onclick="close_('mAdd')">Отмена</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+let t;
+function toast(m){const e=$("#toast");e.textContent=m;e.classList.add("show");clearTimeout(t);t=setTimeout(()=>e.classList.remove("show"),2200)}
+function open_(id){$("#"+id).classList.add("show")}
+function close_(id){$("#"+id).classList.remove("show")}
+function openCreate(){open_("mCreate")}
+function openAdd(){open_("mAdd")}
+
+// ---------- состояние пользователя ----------
+let user={name:"",city:"",av:"🙂",isNew:true};
+
+// демо-данные активного пользователя
+const D={
+  feed:[
+    {e:"🎂",t:"Айдар Сапаров",s:"День рождения",p:"через 3 дня",soon:true,ev:false},
+    {e:"🏠",t:"Новоселье у Дианы",s:"Сб, 28 июня · 19:00",p:"через 8 дней",soon:false,ev:true},
+    {e:"🎂",t:"Малика Ж.",s:"День рождения",p:"через 6 дней",soon:true,ev:false},
+    {e:"💍",t:"Свадьба Ержана и Камилы",s:"12 июля · 17:00",p:"через 22 дня",soon:false,ev:true},
+  ],
+  mine:[
+    {e:"🎂",t:"Мой день рождения",s:"12 августа · вишлист прикреплён",p:"через 53 дня"},
+    {e:"🍷",t:"Встреча команды Sagi",s:"5 июля · 20:00",p:"через 15 дней"},
+  ],
+  wishes:[
+    {e:"🎧",t:"Беспроводные наушники",pr:"89 000 ₸",prio:"🔥 Очень хочу",note:"Цвет чёрный",res:false,joint:false,collected:0},
+    {e:"📚",t:"Книга «Атлант расправил плечи»",pr:"7 500 ₸",prio:"Хочу",note:"",res:true,joint:false,collected:0},
+    {e:"⌚",t:"Смарт-часы Garmin",pr:"320 000 ₸",prio:"🔥 Очень хочу",note:"Совместный подарок",res:false,joint:true,collected:60},
+    {e:"☕",t:"Кофемашина",pr:"145 000 ₸",prio:"Было бы приятно",note:"",res:false,joint:true,collected:25},
+  ],
+  notifs:[
+    {e:"🎁",t:"Кто-то зарезервировал подарок из твоего вишлиста",s:"только что"},
+    {e:"✅",t:"Айдар придёт на «Встречу команды Sagi»",s:"1 ч назад"},
+    {e:"💰",t:"На «Смарт-часы Garmin» собрано 60%",s:"3 ч назад"},
+    {e:"🎂",t:"Через 3 дня день рождения Айдара",s:"сегодня"},
+    {e:"✉️",t:"Диана пригласила тебя на новоселье",s:"вчера"},
+  ],
+};
+const friends=["Айдар","Малика","Ержан","Диана","Камила"];
+const guests=[{n:"Айдар",s:"yes"},{n:"Малика",s:"yes"},{n:"Ержан",s:"maybe"},{n:"Камила",s:"no"},{n:"Тимур",s:"yes"}];
+const checklist=[{w:"🎂 Торт",who:"Малика"},{w:"🍕 Еда",who:"Айдар"},{w:"🔊 Музыка",who:"свободно"},{w:"🥤 Напитки",who:"Тимур"}];
+const resources=[
+  {e:"📍",t:"Маршрут на карте",s:"ул. Абая 10 · 12 мин на такси",a:"карту"},
+  {e:"📁",t:"Google Drive — фото и видео",s:"Общая папка · все могут загружать",a:"папку"},
+  {e:"🎵",t:"Плейлист вечера",s:"Spotify · добавь свои треки",a:"плейлист"},
+  {e:"📹",t:"Ссылка на видеозвонок",s:"Для тех, кто не сможет прийти",a:"звонок"},
+  {e:"🎁",t:"Вишлист Дианы",s:"Что подарить на новоселье",a:"вишлист"},
+];
+const album=["🖼️","📷","🎉","🥳","🍰","✨"];
+const wall=[{n:"Айдар",m:"Буду точно! Принесу колонку 🔊"},{n:"Малика",m:"Поздравляю с новосельем 🎉 Торт за мной"},{n:"Тимур",m:"А дресс-код есть?"}];
+
+// рабочие массивы (зависят от режима)
+let feed=[],mine=[],wishes=[],notifs=[];
+
+// ---------- рендер ----------
+function card(o,onclick){return `<div class="ev" ${onclick?`onclick="${onclick}"`:''}>
+  <div class="emoji">${o.e}</div><div class="meta"><b>${o.t}</b><span>${o.s}</span></div>
+  <span class="pill ${o.soon?'soon':''}">${o.p}</span></div>`;}
+
+function renderAll(){
+  const newU=user.isNew;
+  // hero
+  $("#feedHero").innerHTML = newU
+    ? `<h2>Привет, ${user.name||'друг'} 👋</h2><p>Добро пожаловать в Sagi Events! Давай заполним твою ленту.</p>`
+    : `<h2>Привет, ${user.name||'Саги'} 👋</h2><p>На этой неделе 2 дня рождения и 1 событие</p>`;
+  // лента
+  if(newU){
+    $("#feedBody").innerHTML=`
+      <div class="empty"><div class="big">👥</div><b>Пока тихо</b>
+        <p>Добавь друзей — и здесь появятся их дни рождения и события. Мы напомним заранее.</p>
+        <button class="btn" onclick="toast('Демо: добавить друзей')">Добавить друзей</button></div>
+      <div class="empty"><div class="big">🎉</div><b>Создай первое событие</b>
+        <p>День рождения, встреча, новоселье — позови гостей в пару тапов.</p>
+        <button class="btn sec" onclick="openCreate()">Создать событие</button></div>`;
+  } else {
+    $("#feedBody").innerHTML=`<h3>Скоро у друзей</h3>`+feed.map(o=>card(o,o.ev?"go('event')":"toast('Демо: профиль друга')")).join("")
+      +`<h3>Мои события <span class="link" onclick="go('profile')">профиль →</span></h3>`+mine.map(o=>card(o,"go('event')")).join("");
+  }
+  // профиль
+  $("#pfAv").textContent=user.av; $("#acAv").textContent=user.av;
+  $("#pfName").textContent=user.name||"Имя"; $("#acName").textContent=user.name||"Имя";
+  $("#pfSub").textContent=(user.city||"Город")+(newU?"":" · 🎂 12 августа");
+  $("#pfFriends").textContent=newU?0:48; $("#pfEvents").textContent=newU?0:mine.length; $("#pfWishes").textContent=wishes.length;
+  $("#pfWishBlock").innerHTML = wishes.length
+    ? `<div class="ev" onclick="go('wishlist')"><div class="emoji">🎁</div><div class="meta"><b>День рождения 2026</b><span>${wishes.length} позиций</span></div><span class="pill">→</span></div>`
+    : `<div class="empty"><div class="big">🎁</div><b>Вишлист пуст</b><p>Добавь желания — друзьям будет проще подарить нужное.</p><button class="btn" onclick="go('wishlist')">Создать вишлист</button></div>`;
+  // вишлист hero + note
+  $("#wishHeroSub").textContent = wishes.length? "День рождения 2026 · друзья резервируют незаметно для тебя":"Добавь то, что хочешь получить в подарок";
+  $("#wishSeg").style.display = wishes.length? "flex":"none";
+  $("#wishNote").style.display = wishes.length? "block":"none";
+  // уведомления
+  $("#notifList").innerHTML = notifs.length
+    ? notifs.map(o=>`<div class="ev"><div class="emoji">${o.e}</div><div class="meta"><b style="font-weight:600;font-size:13px">${o.t}</b><span>${o.s}</span></div></div>`).join("")
+    : `<div class="empty"><div class="big">🔔</div><b>Уведомлений нет</b><p>Здесь появятся напоминания о днях рождения, ответы на приглашения и брони подарков.</p></div>`;
+  $("#bell").innerHTML = notifs.length? '🔔<span class="dot"></span>':'🔔';
+  renderWishes();
+}
+
+function renderWishes(){
+  if(!wishes.length){
+    $("#wishItems").innerHTML=`<div class="empty"><div class="big">🎁</div><b>Список желаний пуст</b><p>Добавь первое желание со ссылкой, ценой и приоритетом. Друзья смогут зарезервировать или скинуться.</p></div>`;
+    $("#wishFriendItems").innerHTML="";return;
+  }
+  $("#wishItems").innerHTML=wishes.map(w=>`<div class="wish ${w.res?'reserved':''}">
+    <div class="ph">${w.e}</div>
+    <div class="meta"><b>${w.t}</b><span>${w.pr} · ${w.prio}${w.note?' · '+w.note:''}</span>
+    ${w.joint?`<div class="progress"><i style="width:${w.collected}%"></i></div><span style="font-size:11px">Совместный · собрано ${w.collected}%</span>`:''}</div>
+  </div>`).join("");
+  $("#wishFriendItems").innerHTML=wishes.map((w,i)=>`<div class="wish ${w.res?'reserved':''}">
+    <div class="ph">${w.e}</div>
+    <div class="meta"><b>${w.t}</b><span>${w.pr}${w.note?' · '+w.note:''}</span>
+    ${w.joint?`<div class="progress"><i style="width:${w.collected}%"></i></div><span style="font-size:11px">Собрано ${w.collected}%</span>`:''}</div>
+    ${w.res?'<span class="tag yes">Занято</span>':w.joint?`<button class="btn tiny" onclick="chip_in(${i})">Вложиться</button>`:`<button class="btn tiny" onclick="reserve(${i})">Дарю это</button>`}
+  </div>`).join("");
+}
+
+// статичные блоки события
+$("#guests").innerHTML=guests.map(g=>`<div class="guest"><div class="gav">${g.n[0]}</div>${g.n}
+  <span class="tag ${g.s}">${g.s=='yes'?'Придёт':g.s=='no'?'Не придёт':'Думает'}</span></div>`).join("");
+$("#checklist").innerHTML=checklist.map(c=>`<div class="guest"><span>${c.w}</span>
+  <span class="tag ${c.who=='свободно'?'maybe':'yes'}" style="margin-left:auto">${c.who}</span></div>`).join("");
+$("#inviteFriends").innerHTML=friends.map(f=>`<span class="chip" onclick="this.classList.toggle('on')">${f}</span>`).join("");
+$("#resources").innerHTML=resources.map(r=>`<div class="ev" onclick="toast('Демо: открыть ${r.a}')"><div class="emoji">${r.e}</div><div class="meta"><b>${r.t}</b><span>${r.s}</span></div><span class="pill">открыть</span></div>`).join("");
+$("#album").innerHTML=`<div style="display:flex;flex-wrap:wrap;gap:8px">`+album.map(p=>`<div style="width:31%;aspect-ratio:1;border-radius:12px;background:#2e3160;display:flex;align-items:center;justify-content:center;font-size:30px">${p}</div>`).join("")+`</div><div class="muted" style="margin-top:10px">Гости загружают фото после события — все воспоминания в одном месте.</div>`;
+$("#wall").innerHTML=wall.map(c=>`<div class="guest"><div class="gav">${c.n[0]}</div><div><b style="font-size:13px">${c.n}</b><div class="muted">${c.m}</div></div></div>`).join("")+`<input placeholder="Написать пожелание или вопрос..." style="margin-top:12px;margin-bottom:0" onkeydown="if(event.key==='Enter'){toast('Демо: сообщение отправлено');this.value=''}">`;
+
+// ---------- навигация ----------
+function go(s,el){
+  document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
+  $("#"+s).classList.add("active");
+  document.querySelectorAll(".tab").forEach(tb=>tb.classList.toggle("on",tb.dataset.s===s));
+  window.scrollTo(0,0);
+}
+
+// ---------- онбординг ----------
+function setMode(isNew){user.isNew=isNew;$("#dmNew").classList.toggle("on",isNew);$("#dmActive").classList.toggle("on",!isNew)}
+function startOnboarding(){
+  setMode(true);
+  feed=[];mine=[];wishes=[];notifs=[];
+  user={name:"",city:"",av:"🙂",isNew:true};
+  ostep(1);$("#onb").classList.add("show");
+}
+function ostep(n){document.querySelectorAll(".ostep").forEach(x=>x.classList.remove("active"));$("#o"+n).classList.add("active");$(".onb").scrollTop=0}
+document.querySelectorAll("#avPick div").forEach(d=>d.onclick=()=>{document.querySelectorAll("#avPick div").forEach(x=>x.classList.remove("on"));d.classList.add("on");user.av=d.textContent});
+function saveProfile(){
+  user.name=$("#obName").value||"Друг"; user.city=$("#obCity").value||"Алматы";
+  renderAll(); ostep(3);
+}
+function finishOnboarding(){
+  $("#onb").classList.remove("show");
+  renderAll(); go("feed");
+  document.querySelector('.tab[data-s=feed]').classList.add('on');
+  toast("Добро пожаловать в Sagi Events 🎉");
+}
+function loadActive(){
+  setMode(false);
+  $("#onb").classList.remove("show");
+  user={name:"Саги",city:"Алматы",av:"С",isNew:false};
+  feed=[...D.feed];mine=[...D.mine];wishes=JSON.parse(JSON.stringify(D.wishes));notifs=[...D.notifs];
+  renderAll(); go("feed");
+}
+function logout(){
+  close_("mAccount");
+  startOnboarding();
+  toast("Ты вышел из аккаунта");
+}
+
+// ---------- действия ----------
+function createEvent(){close_("mCreate");open_("mInvite")}
+function rsvp(el,v){el.parentNode.querySelectorAll("button").forEach(b=>b.classList.remove("on"));el.classList.add("on");toast("Ответ записан: "+v)}
+function wishView(el,v){el.parentNode.querySelectorAll("button").forEach(b=>b.classList.remove("on"));el.classList.add("on");
+  $("#wishMine").style.display=v=='mine'?'block':'none';$("#wishFriend").style.display=v=='friend'?'block':'none';}
+function reserve(i){wishes[i].res=true;renderWishes();toast("Ты зарезервировал подарок 🤫 Именинник не увидит")}
+function chip_in(i){wishes[i].collected=Math.min(100,wishes[i].collected+15);renderWishes();toast("Ты вложился в общий подарок 💰")}
+function addWish(){
+  const n=$("#addName").value||"Новое желание";
+  wishes.unshift({e:"✨",t:n,pr:($("#addPrice").value||"—")+" ₸",prio:$("#addPrio").value,note:$("#addNote").value,res:false,joint:$("#addJoint").checked,collected:0});
+  ["addName","addPrice","addNote","addLink"].forEach(id=>$("#"+id).value="");$("#addJoint").checked=false;
+  close_("mAdd");renderAll();go("wishlist");toast("Желание добавлено 🎁")
+}
+document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)m.classList.remove("show")}));
+document.querySelectorAll("#evTypes .chip").forEach(c=>c.onclick=()=>{document.querySelectorAll("#evTypes .chip").forEach(x=>x.classList.remove("on"));c.classList.add("on")});
+document.querySelectorAll("#resTypes .chip").forEach(c=>c.onclick=()=>c.classList.toggle("on"));
+
+// ---------- старт: показываем нового пользователя ----------
+startOnboarding();
+</script>
+</body>
+</html>
