@@ -112,6 +112,17 @@
   .demobar{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:150;background:rgba(26,28,51,.92);border:1px solid var(--accent);border-radius:30px;padding:5px;display:flex;gap:4px;font-size:11px;box-shadow:0 6px 20px rgba(0,0,0,.4)}
   .demobar button{border:none;background:transparent;color:var(--mut);padding:6px 12px;border-radius:24px;font-size:11px;font-weight:700;cursor:pointer}
   .demobar button.on{background:var(--accent);color:#fff}
+  /* календарь */
+  .calhead{display:flex;align-items:center;justify-content:space-between;margin:2px 2px 12px}
+  .calhead b{font-size:16px}
+  .calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:16px}
+  .caldow{text-align:center;font-size:10px;color:var(--mut);padding:4px 0;font-weight:600}
+  .calday{aspect-ratio:1;border-radius:11px;background:var(--card2);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:13px;position:relative;border:1px solid transparent}
+  .calday.empty{background:transparent}
+  .calday.today{border-color:var(--accent);font-weight:700}
+  .calday.has{cursor:pointer}
+  .calday .ev2{position:absolute;bottom:5px;font-size:11px;line-height:1}
+  .calday.has .num{margin-bottom:7px}
 </style>
 </head>
 <body>
@@ -188,7 +199,12 @@
   <!-- ====== ЛЕНТА ====== -->
   <div id="feed" class="screen active">
     <div class="hero" id="feedHero"></div>
+    <div class="seg" id="feedSeg" style="display:none">
+      <button class="on" onclick="feedView(this,'list')">📋 Лента</button>
+      <button onclick="feedView(this,'cal')">📅 Календарь</button>
+    </div>
     <div id="feedBody"></div>
+    <div id="feedCal" style="display:none"></div>
   </div>
 
   <!-- ====== ПРОФИЛЬ ====== -->
@@ -435,7 +451,9 @@ function renderAll(){
     ? `<h2>Привет, ${user.name||'друг'} 👋</h2><p>Добро пожаловать в Sagi Events! Давай заполним твою ленту.</p>`
     : `<h2>Привет, ${user.name||'Саги'} 👋</h2><p>На этой неделе 2 дня рождения и 1 событие</p>`;
   // лента
+  $("#feedSeg").style.display = newU? "none":"flex";
   if(newU){
+    $("#feedCal").style.display="none"; $("#feedBody").style.display="block";
     $("#feedBody").innerHTML=`
       <div class="empty"><div class="big">👥</div><b>Пока тихо</b>
         <p>Добавь друзей — и здесь появятся их дни рождения и события. Мы напомним заранее.</p>
@@ -446,6 +464,7 @@ function renderAll(){
   } else {
     $("#feedBody").innerHTML=`<h3>Скоро у друзей</h3>`+feed.map(o=>card(o,o.ev?"go('event')":"toast('Демо: профиль друга')")).join("")
       +`<h3>Мои события <span class="link" onclick="go('profile')">профиль →</span></h3>`+mine.map(o=>card(o,"go('event')")).join("");
+    renderCalendar();
   }
   // профиль
   $("#pfAv").textContent=user.av; $("#acAv").textContent=user.av;
@@ -467,6 +486,39 @@ function renderAll(){
   renderWishes();
 }
 
+// активности по дням июня 2026
+const calEvents={
+  24:{e:"🎂",t:"День рождения Айдара"},
+  27:{e:"🎂",t:"День рождения Малики"},
+  28:{e:"🏠",t:"Новоселье у Дианы",ev:true},
+};
+function feedView(el,v){
+  el.parentNode.querySelectorAll("button").forEach(b=>b.classList.remove("on"));el.classList.add("on");
+  $("#feedBody").style.display = v=='list'?'block':'none';
+  $("#feedCal").style.display = v=='cal'?'block':'none';
+}
+function renderCalendar(){
+  const y=2026,m=5,today=21,days=30; // июнь 2026
+  const dow=["Пн","Вт","Ср","Чт","Пт","Сб","Вс"];
+  const first=(new Date(y,m,1).getDay()+6)%7; // смещение для пн-первого
+  let cells="";
+  for(let i=0;i<first;i++)cells+=`<div class="calday empty"></div>`;
+  for(let d=1;d<=days;d++){
+    const ev=calEvents[d];
+    const cls="calday"+(d==today?" today":"")+(ev?" has":"");
+    const click=ev?(ev.ev?`onclick="go('event')"`:`onclick="toast('${ev.t}')"`):"";
+    cells+=`<div class="${cls}" ${click}><span class="num">${d}</span>${ev?`<span class="ev2">${ev.e}</span>`:""}</div>`;
+  }
+  const list=Object.keys(calEvents).sort((a,b)=>a-b).map(d=>{
+    const ev=calEvents[d];
+    return `<div class="ev" ${ev.ev?`onclick="go('event')"`:`onclick="toast('${ev.t}')"`}><div class="emoji">${ev.e}</div>
+      <div class="meta"><b>${ev.t}</b><span>${d} июня</span></div><span class="pill">${d-today>0?'через '+(d-today)+' дн.':''}</span></div>`;
+  }).join("");
+  $("#feedCal").innerHTML=`
+    <div class="calhead"><span class="link" onclick="toast('Демо: предыдущий месяц')">‹</span><b>Июнь 2026</b><span class="link" onclick="toast('Демо: следующий месяц')">›</span></div>
+    <div class="calgrid">${dow.map(d=>`<div class="caldow">${d}</div>`).join("")}${cells}</div>
+    <h3>Активности месяца</h3>${list}`;
+}
 function renderWishes(){
   if(!wishes.length){
     $("#wishItems").innerHTML=`<div class="empty"><div class="big">🎁</div><b>Список желаний пуст</b><p>Добавь первое желание со ссылкой, ценой и приоритетом. Друзья смогут зарезервировать или скинуться.</p></div>`;

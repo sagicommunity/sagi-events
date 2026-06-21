@@ -89,6 +89,22 @@
   footer{padding:40px 0 60px;text-align:center;color:var(--ink2);font-size:13px}
   .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:13px 20px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:.3s;z-index:99}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  /* галерея экранов */
+  .screens{display:flex;gap:18px;overflow-x:auto;padding:6px 4px 18px;scroll-snap-type:x mandatory}
+  .gcol{flex:0 0 auto;scroll-snap-align:center;text-align:center}
+  .gcol .cap{font-size:13px;color:var(--ink2);margin-top:12px;font-weight:600}
+  .gphone{width:230px;height:460px;background:#15132b;border-radius:30px;padding:9px;box-shadow:0 18px 44px rgba(40,20,90,.22);border:1px solid #2a2550}
+  .gscr{width:100%;height:100%;border-radius:23px;overflow:hidden;background:radial-gradient(300px 160px at 80% 0,#2a1d5a 0,transparent 60%),#0f1020;color:#eef0ff;padding:14px 11px;font-size:11px;text-align:left}
+  .gscr .gh{font-weight:800;font-size:13px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:10px}
+  .gscr .gban{border-radius:13px;padding:11px;margin-bottom:9px;color:#fff}
+  .gscr .git{display:flex;gap:7px;align-items:center;background:#1c1e38;border-radius:9px;padding:7px;margin-bottom:6px}
+  .gscr .gem{width:26px;height:26px;border-radius:7px;background:#2e3160;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+  .gscr .git b{font-size:10.5px}.gscr .git small{color:#9aa0c8;font-size:9px;display:block}
+  .gscr .gpill{margin-left:auto;font-size:8px;background:#5a2740;color:#ffc0d2;padding:2px 6px;border-radius:8px}
+  .gcal{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-top:6px}
+  .gcal div{aspect-ratio:1;border-radius:5px;background:#1c1e38;display:flex;align-items:center;justify-content:center;font-size:8px;color:#9aa0c8}
+  .gcal div.m{background:#312a63;color:#fff}
+  .gbar{height:6px;border-radius:4px;background:#2e3160;margin-top:5px;overflow:hidden}.gbar i{display:block;height:100%;background:var(--grad)}
   @media(max-width:820px){
     .hero .wrap,.split{grid-template-columns:1fr}
     .grid,.steps{grid-template-columns:1fr}
@@ -103,9 +119,9 @@
 <nav><div class="wrap">
   <div class="logo">Sagi Events</div>
   <div class="navlinks">
-    <a href="#how">Как работает</a>
     <a href="#feat">Возможности</a>
-    <a href="#guests">Для гостей</a>
+    <a href="#screens">Экраны</a>
+    <a href="#how">Как работает</a>
   </div>
   <div class="navcta">
     <a class="btn ghost" href="app.html">Войти</a>
@@ -173,6 +189,58 @@
   </div>
 </div></section>
 
+<!-- ЭКРАНЫ -->
+<section id="screens"><div class="wrap">
+  <div class="eyebrow">Как это выглядит</div>
+  <h2>Загляни внутрь приложения</h2>
+  <p class="sub">Календарь активностей, профиль, вишлист и страница события — всё в одном месте.</p>
+  <div class="screens">
+
+    <!-- Календарь -->
+    <div class="gcol"><div class="gphone"><div class="gscr">
+      <div class="gh">📅 Июнь 2026</div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;font-size:8px;color:#9aa0c8;margin-bottom:3px">
+        <div>Пн</div><div>Вт</div><div>Ср</div><div>Чт</div><div>Пт</div><div>Сб</div><div>Вс</div></div>
+      <div class="gcal" id="gcalGrid"></div>
+      <div style="font-size:9px;color:#9aa0c8;margin-top:8px">🎂 24 — ДР Айдара · 🏠 28 — Новоселье</div>
+    </div></div><div class="cap">Календарь активностей</div></div>
+
+    <!-- Профиль -->
+    <div class="gcol"><div class="gphone"><div class="gscr">
+      <div class="gh">👤 Профиль</div>
+      <div style="text-align:center;margin-bottom:10px">
+        <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#7c5cff,#ff5c8a);margin:0 auto 6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px">С</div>
+        <b style="font-size:12px">Саги</b><br><small style="color:#9aa0c8;font-size:9px">Алматы · 🎂 12 августа</small></div>
+      <div style="display:flex;gap:6px;text-align:center;margin-bottom:10px">
+        <div style="flex:1"><b style="font-size:13px">48</b><br><small style="color:#9aa0c8;font-size:8px">друзей</small></div>
+        <div style="flex:1"><b style="font-size:13px">3</b><br><small style="color:#9aa0c8;font-size:8px">события</small></div>
+        <div style="flex:1"><b style="font-size:13px">12</b><br><small style="color:#9aa0c8;font-size:8px">желаний</small></div></div>
+      <div class="git"><div class="gem">🎁</div><div><b>Мой вишлист</b><small>12 позиций</small></div></div>
+      <div class="git"><div class="gem">🔒</div><div><b>Приватность</b><small>Только друзья</small></div></div>
+    </div></div><div class="cap">Профиль</div></div>
+
+    <!-- Вишлист -->
+    <div class="gcol"><div class="gphone"><div class="gscr">
+      <div class="gban" style="background:linear-gradient(135deg,#ff5c8a,#7c5cff)"><b>🎁 Мой вишлист</b><br><small>День рождения 2026</small></div>
+      <div class="git"><div class="gem">🎧</div><div><b>Наушники</b><small>89 000 ₸ · 🔥 хочу</small></div></div>
+      <div class="git"><div class="gem">⌚</div><div style="flex:1"><b>Смарт-часы</b><small>Совместный</small><div class="gbar"><i style="width:60%"></i></div></div></div>
+      <div class="git"><div class="gem">☕</div><div><b>Кофемашина</b><small>145 000 ₸</small></div></div>
+      <div class="git" style="opacity:.5"><div class="gem">📚</div><div><b>Книга</b><small>Занято 🤫</small></div></div>
+    </div></div><div class="cap">Вишлист с резервом</div></div>
+
+    <!-- Событие -->
+    <div class="gcol"><div class="gphone"><div class="gscr">
+      <div class="gban" style="background:linear-gradient(135deg,#36d399,#7c5cff)"><b>🏠 Новоселье у Дианы</b><br><small>Сб, 28 июня · 19:00</small></div>
+      <div class="git"><div class="gem">✅</div><div><b>Ты идёшь?</b><small>14 придут</small></div><span class="gpill">8 дней</span></div>
+      <div style="font-size:9px;color:#9aa0c8;margin:8px 0 5px">Ссылки и ресурсы</div>
+      <div class="git"><div class="gem">📍</div><div><b>Карта</b><small>ул. Абая 10</small></div></div>
+      <div class="git"><div class="gem">📁</div><div><b>Google Drive</b><small>Фото и видео</small></div></div>
+      <div class="git"><div class="gem">🎵</div><div><b>Плейлист</b><small>Spotify</small></div></div>
+    </div></div><div class="cap">Страница события</div></div>
+
+  </div>
+</div></section>
+
 <!-- КАК РАБОТАЕТ -->
 <section id="how"><div class="wrap">
   <div class="eyebrow">Как это работает</div>
@@ -215,6 +283,8 @@
 <script>
   let t;function toast(m){const e=document.getElementById("toast");e.textContent=m;e.classList.add("show");clearTimeout(t);t=setTimeout(()=>e.classList.remove("show"),2200)}
   document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener("click",e=>{e.preventDefault();document.querySelector(a.getAttribute("href")).scrollIntoView({behavior:"smooth"})}));
+  // мини-календарь июня 2026 (1 июня = понедельник)
+  (function(){const marks={24:1,27:1,28:1};let h="";for(let d=1;d<=30;d++)h+=`<div class="${marks[d]?'m':''}">${d}</div>`;const g=document.getElementById("gcalGrid");if(g)g.innerHTML=h;})();
 </script>
 </body>
 </html>
