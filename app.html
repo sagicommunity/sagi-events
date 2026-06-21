@@ -16,11 +16,12 @@
     radial-gradient(900px 500px at -10% 20%,#123a37 0,transparent 55%),var(--bg);
     color:var(--txt);min-height:100vh;display:flex;justify-content:center;padding:24px 12px 90px}
   .shell{width:100%;max-width:430px}
+  svg{display:block}
   .topbar{display:flex;align-items:center;justify-content:space-between;padding:6px 6px 14px}
   .brand{font-weight:800;font-size:22px;letter-spacing:.5px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
   .brand small{display:block;font-size:10px;font-weight:600;color:var(--mut);letter-spacing:2px;-webkit-text-fill-color:var(--mut)}
   .topicons{display:flex;gap:8px}
-  .icobtn{position:relative;width:42px;height:42px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer}
+  .icobtn{position:relative;width:42px;height:42px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--txt)}
   .icobtn .dot{position:absolute;top:8px;right:9px;width:9px;height:9px;border-radius:50%;background:var(--accent2);border:2px solid var(--card)}
   .screen{display:none;animation:fade .25s ease}
   .screen.active{display:block}
@@ -28,69 +29,85 @@
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:14px}
   .hero{position:relative;border-radius:24px;overflow:hidden;padding:22px;background:linear-gradient(135deg,#4f7cf0,#14b8a6);margin-bottom:16px}
   .hero h2{font-size:22px}
-  .hero p{opacity:.9;font-size:13px;margin-top:4px}
-  .avatar{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;background:rgba(255,255,255,.25);border:2px solid rgba(255,255,255,.5)}
+  .hero p{opacity:.92;font-size:13px;margin-top:4px}
+  .avatar{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.4)}
   .row{display:flex;gap:12px;align-items:center}
   .stat{flex:1;text-align:center}
   .stat b{font-size:18px;display:block}
   .stat span{font-size:11px;color:var(--mut)}
-  h3{font-size:15px;margin:4px 2px 10px;display:flex;justify-content:space-between;align-items:center}
+  h3{font-size:15px;margin:14px 2px 10px;display:flex;justify-content:space-between;align-items:center}
   h3 .link{font-size:12px;color:var(--accent);cursor:pointer;font-weight:600}
   .ev{display:flex;gap:12px;align-items:center;padding:12px;border-radius:14px;background:var(--card2);margin-bottom:10px;cursor:pointer;border:1px solid transparent;transition:.15s}
   .ev:hover{border-color:var(--accent)}
-  .emoji{width:46px;height:46px;border-radius:12px;background:#243149;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+  .ic{width:46px;height:46px;border-radius:12px;background:#243149;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent)}
+  .ic.sm{width:34px;height:34px;border-radius:10px}
   .ev .meta{flex:1;min-width:0}
   .ev .meta b{font-size:14px}
   .ev .meta span{font-size:12px;color:var(--mut);display:block}
   .pill{font-size:11px;padding:4px 9px;border-radius:20px;background:#243149;color:#aecbf2;white-space:nowrap}
   .pill.soon{background:#3a3a20;color:#ecd58a}
+  .cat{display:inline-block;font-size:10px;padding:2px 8px;border-radius:8px;background:#23314a;color:#9fc0ff;margin-top:3px}
   .btn{display:block;width:100%;text-align:center;padding:13px;border-radius:14px;border:none;font-size:14px;font-weight:700;cursor:pointer;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;margin-top:6px}
   .btn.sec{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
   .btn.danger{background:transparent;color:#ff8fa6;border:1px solid #5a3030}
   .btn.tiny{display:inline-block;width:auto;padding:8px 14px;font-size:12px;margin:0}
+  .btn.ico{display:flex;align-items:center;justify-content:center;gap:8px}
   input,select,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card2);color:var(--txt);font-size:14px;font-family:inherit;margin-bottom:10px}
   label{font-size:12px;color:var(--mut);margin:2px 2px 6px;display:block}
   .seg{display:flex;background:var(--card2);border-radius:12px;padding:4px;gap:4px;margin-bottom:14px}
   .seg button{flex:1;border:none;background:transparent;color:var(--mut);padding:8px;border-radius:9px;font-size:12px;font-weight:600;cursor:pointer}
   .seg button.on{background:var(--accent);color:#fff}
   .wish{display:flex;gap:12px;padding:12px;border-radius:14px;background:var(--card2);margin-bottom:10px;align-items:center}
-  .wish .ph{width:50px;height:50px;border-radius:11px;background:#243149;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
-  .wish .meta{flex:1;min-width:0}
-  .wish .meta b{font-size:14px}
-  .wish .meta span{font-size:12px;color:var(--mut)}
   .reserved{opacity:.55}
   .reserved .meta b{text-decoration:line-through}
   .progress{height:7px;border-radius:5px;background:#243149;overflow:hidden;margin-top:7px}
   .progress i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
-  .empty{text-align:center;padding:30px 18px;border:1.5px dashed var(--line);border-radius:18px;margin-bottom:14px}
-  .empty .big{font-size:40px;margin-bottom:10px}
+  .empty{text-align:center;padding:28px 18px;border:1.5px dashed var(--line);border-radius:18px;margin-bottom:14px}
+  .empty .eic{color:var(--mut);margin:0 auto 10px;display:flex;justify-content:center}
   .empty b{font-size:15px;display:block;margin-bottom:6px}
   .empty p{font-size:12.5px;color:var(--mut);line-height:1.5;margin-bottom:14px}
-  .tabbar{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:center;background:rgba(15,16,32,.85);backdrop-filter:blur(12px);border-top:1px solid var(--line);z-index:10}
+  .tabbar{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:center;background:rgba(15,20,32,.88);backdrop-filter:blur(12px);border-top:1px solid var(--line);z-index:10}
   .tabbar .inner{width:100%;max-width:430px;display:flex}
-  .tab{flex:1;text-align:center;padding:11px 0 14px;color:var(--mut);font-size:10px;cursor:pointer;border:none;background:none}
-  .tab .ic{font-size:20px;display:block;margin-bottom:2px;filter:grayscale(1) opacity(.7)}
+  .tab{flex:1;text-align:center;padding:9px 0 12px;color:var(--mut);font-size:10px;cursor:pointer;border:none;background:none;display:flex;flex-direction:column;align-items:center;gap:3px}
   .tab.on{color:var(--accent)}
-  .tab.on .ic{filter:none}
-  .fab{position:fixed;bottom:78px;left:50%;transform:translateX(calc(215px - 100%));width:56px;height:56px;border-radius:50%;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:28px;cursor:pointer;box-shadow:0 8px 24px rgba(79,124,240,.45);z-index:9}
-  .modal{position:fixed;inset:0;background:rgba(8,8,18,.7);display:none;align-items:flex-end;justify-content:center;z-index:50}
+  .fab{position:fixed;bottom:78px;left:50%;transform:translateX(calc(215px - 100%));width:56px;height:56px;border-radius:50%;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;cursor:pointer;box-shadow:0 8px 24px rgba(79,124,240,.45);z-index:9;display:flex;align-items:center;justify-content:center}
+  .modal{position:fixed;inset:0;background:rgba(8,10,18,.7);display:none;align-items:flex-end;justify-content:center;z-index:50}
   .modal.show{display:flex}
   .sheet{width:100%;max-width:430px;background:var(--card);border-radius:24px 24px 0 0;padding:20px;max-height:88vh;overflow:auto;animation:up .25s ease}
   @keyframes up{from{transform:translateY(40px)}to{transform:none}}
   .sheet .grab{width:40px;height:4px;border-radius:3px;background:var(--line);margin:0 auto 16px}
-  .chip{display:inline-block;padding:6px 12px;border-radius:20px;background:var(--card2);border:1px solid var(--line);font-size:12px;margin:0 6px 8px 0;cursor:pointer}
+  .chip{display:inline-block;padding:7px 13px;border-radius:20px;background:var(--card2);border:1px solid var(--line);font-size:12px;margin:0 6px 8px 0;cursor:pointer}
   .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
   .toast{position:fixed;bottom:150px;left:50%;transform:translateX(-50%) translateY(20px);background:#1e2942;border:1px solid var(--accent);color:#fff;padding:12px 18px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition:.3s;z-index:99;max-width:90%;text-align:center}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
   .guest{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
-  .gav{width:34px;height:34px;border-radius:50%;background:#243149;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+  .guest:last-child{border-bottom:none}
+  .gav{width:34px;height:34px;border-radius:50%;background:#243149;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--accent)}
   .tag{font-size:10px;padding:3px 8px;border-radius:8px;margin-left:auto}
   .tag.yes{background:#16412f;color:var(--ok)}
   .tag.no{background:#45222c;color:#ff9fb2}
   .tag.maybe{background:#453a1c;color:var(--warn)}
+  .role{font-size:10px;padding:3px 8px;border-radius:8px;margin-left:auto;background:#23314a;color:#9fc0ff}
   .muted{color:var(--mut);font-size:12px;line-height:1.5}
   .note{font-size:11px;color:var(--mut);background:var(--card2);border-radius:10px;padding:9px 11px;margin-top:8px}
-  /* онбординг */
+  .calhead{display:flex;align-items:center;justify-content:space-between;margin:2px 2px 12px}
+  .calhead b{font-size:16px}.calhead span{cursor:pointer;color:var(--accent);font-size:20px;padding:0 8px}
+  .calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:8px}
+  .caldow{text-align:center;font-size:10px;color:var(--mut);padding:4px 0;font-weight:600}
+  .calday{aspect-ratio:1;border-radius:11px;background:var(--card2);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:13px;position:relative;border:1px solid transparent}
+  .calday.empty{background:transparent}
+  .calday.today{border-color:var(--accent);font-weight:700}
+  .calday.has{cursor:pointer}
+  .calday .mk{position:absolute;bottom:6px;width:5px;height:5px;border-radius:50%;background:var(--accent2)}
+  .langseg{display:flex;gap:6px;justify-content:center;margin-bottom:8px}
+  .langseg button{border:1px solid var(--line);background:var(--card2);color:var(--mut);padding:6px 12px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer}
+  .langseg button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .feat{display:flex;gap:12px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px;margin-bottom:10px}
+  .feat .fic{color:var(--accent);flex-shrink:0}
+  .feat b{font-size:14px}.feat span{font-size:12px;color:var(--mut);display:block}
+  .dots{display:flex;gap:6px;justify-content:center;margin:18px 0}
+  .dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}
+  .dots i.on{background:var(--accent);width:20px;border-radius:4px}
   .onb{position:fixed;inset:0;z-index:200;display:none;background:
     radial-gradient(900px 500px at 80% 0,#16243f 0,transparent 60%),
     radial-gradient(700px 500px at 0 100%,#123a37 0,transparent 55%),var(--bg);
@@ -100,508 +117,574 @@
   .ostep{display:none;animation:fade .3s ease}
   .ostep.active{display:block}
   .obrand{font-size:40px;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:6px}
-  .feat{display:flex;gap:12px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px;margin-bottom:10px}
-  .feat .fi{font-size:24px}
-  .feat b{font-size:14px}.feat span{font-size:12px;color:var(--mut)}
-  .av-pick{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:12px}
-  .av-pick div{width:46px;height:46px;border-radius:50%;background:var(--card2);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer}
-  .av-pick div.on{border-color:var(--accent);background:#243149}
-  .dots{display:flex;gap:6px;justify-content:center;margin:18px 0}
-  .dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}
-  .dots i.on{background:var(--accent);width:20px;border-radius:4px}
-  .demobar{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:150;background:rgba(26,28,51,.92);border:1px solid var(--accent);border-radius:30px;padding:5px;display:flex;gap:4px;font-size:11px;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+  .demobar{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:150;background:rgba(22,28,43,.92);border:1px solid var(--accent);border-radius:30px;padding:5px;display:flex;gap:4px;box-shadow:0 6px 20px rgba(0,0,0,.4)}
   .demobar button{border:none;background:transparent;color:var(--mut);padding:6px 12px;border-radius:24px;font-size:11px;font-weight:700;cursor:pointer}
   .demobar button.on{background:var(--accent);color:#fff}
-  /* календарь */
-  .calhead{display:flex;align-items:center;justify-content:space-between;margin:2px 2px 12px}
-  .calhead b{font-size:16px}
-  .calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:16px}
-  .caldow{text-align:center;font-size:10px;color:var(--mut);padding:4px 0;font-weight:600}
-  .calday{aspect-ratio:1;border-radius:11px;background:var(--card2);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:13px;position:relative;border:1px solid transparent}
-  .calday.empty{background:transparent}
-  .calday.today{border-color:var(--accent);font-weight:700}
-  .calday.has{cursor:pointer}
-  .calday .ev2{position:absolute;bottom:5px;font-size:11px;line-height:1}
-  .calday.has .num{margin-bottom:7px}
 </style>
 </head>
 <body>
 
-<!-- демо-переключатель режимов -->
 <div class="demobar">
-  <button id="dmNew" class="on" onclick="startOnboarding()">👋 Новый пользователь</button>
-  <button id="dmActive" onclick="loadActive()">⚡ Активный (с данными)</button>
+  <button id="dmNew" class="on" onclick="startOnboarding()" data-i18n="demo_new">Новый пользователь</button>
+  <button id="dmActive" onclick="loadActive()" data-i18n="demo_active">Активный</button>
 </div>
 
-<!-- ===== ОНБОРДИНГ ===== -->
+<!-- ОНБОРДИНГ -->
 <div class="onb" id="onb"><div class="inner">
-
-  <!-- шаг 1: приветствие -->
   <div class="ostep active" id="o1">
+    <div class="langseg" id="obLang"></div>
     <div class="obrand">Sagi Events</div>
-    <p class="muted" style="margin-bottom:24px">Никогда не забывай о праздниках близких и получай подарки, которые правда хочешь.</p>
-    <div class="feat"><div class="fi">🎂</div><div><b>Дни рождения друзей</b><span>Напомним заранее — не пропустишь</span></div></div>
-    <div class="feat"><div class="fi">🎁</div><div><b>Свой вишлист</b><span>Друзья дарят нужное, без дублей</span></div></div>
-    <div class="feat"><div class="fi">🎉</div><div><b>Свои события</b><span>Создай ивент и позови гостей</span></div></div>
-    <button class="btn" style="margin-top:18px" onclick="ostep(2)">Создать аккаунт</button>
-    <p class="muted" style="margin-top:12px">Это займёт меньше минуты. Уже есть аккаунт? <span style="color:var(--accent);cursor:pointer" onclick="ostep(2)">Войти</span></p>
+    <p class="muted" style="margin-bottom:24px" data-i18n="ob_welcome_sub"></p>
+    <div class="feat"><span class="fic" id="of1"></span><div><b data-i18n="ob_f1_t"></b><span data-i18n="ob_f1_s"></span></div></div>
+    <div class="feat"><span class="fic" id="of2"></span><div><b data-i18n="ob_f2_t"></b><span data-i18n="ob_f2_s"></span></div></div>
+    <div class="feat"><span class="fic" id="of3"></span><div><b data-i18n="ob_f3_t"></b><span data-i18n="ob_f3_s"></span></div></div>
+    <button class="btn" style="margin-top:18px" onclick="ostep(2)" data-i18n="ob_create_account"></button>
+    <p class="muted" style="margin-top:12px"><span data-i18n="ob_minute"></span> <span data-i18n="ob_have"></span> <span style="color:var(--accent);cursor:pointer" onclick="ostep(2)" data-i18n="ob_login"></span></p>
   </div>
-
-  <!-- шаг 2: профиль -->
   <div class="ostep" id="o2">
     <div class="dots"><i class="on"></i><i></i><i></i></div>
-    <h2 style="margin-bottom:4px">Создай профиль</h2>
-    <p class="muted" style="margin-bottom:18px">Так друзья тебя узнают</p>
-    <label>Имя</label><input id="obName" placeholder="Как тебя зовут">
-    <label>Город</label><input id="obCity" placeholder="Алматы">
-    <button class="btn" onclick="saveProfile()">Дальше</button>
+    <h2 style="margin-bottom:4px" data-i18n="ob_profile_t"></h2>
+    <p class="muted" style="margin-bottom:18px" data-i18n="ob_profile_s"></p>
+    <label data-i18n="ob_name"></label><input id="obName" data-i18n-ph="ob_name_ph">
+    <label data-i18n="ob_city"></label><input id="obCity" data-i18n-ph="ob_city_ph">
+    <button class="btn" onclick="saveProfile()" data-i18n="ob_next"></button>
   </div>
-
-  <!-- шаг 3: день рождения -->
   <div class="ostep" id="o3">
     <div class="dots"><i></i><i class="on"></i><i></i></div>
-    <h2 style="margin-bottom:4px">Когда твой день рождения? 🎂</h2>
-    <p class="muted" style="margin-bottom:18px">Друзья получат напоминание. Год можно скрыть.</p>
-    <label>Дата рождения</label><input id="obBday" type="date">
-    <label><input type="checkbox" id="obHideYear" style="width:auto;margin-right:8px" checked>Скрыть год от друзей</label>
-    <button class="btn" onclick="ostep(4)">Дальше</button>
-    <button class="btn sec" onclick="ostep(4)">Пропустить</button>
+    <h2 style="margin-bottom:4px" data-i18n="ob_bday_t"></h2>
+    <p class="muted" style="margin-bottom:18px" data-i18n="ob_bday_s"></p>
+    <label data-i18n="ob_bday_date"></label><input type="date">
+    <label><input type="checkbox" style="width:auto;margin-right:8px" checked> <span data-i18n="ob_hide_year"></span></label>
+    <button class="btn" onclick="ostep(4)" data-i18n="ob_next"></button>
+    <button class="btn sec" onclick="ostep(4)" data-i18n="ob_skip"></button>
   </div>
-
-  <!-- шаг 4: друзья -->
   <div class="ostep" id="o4">
     <div class="dots"><i></i><i></i><i class="on"></i></div>
-    <h2 style="margin-bottom:4px">Добавь друзей 👥</h2>
-    <p class="muted" style="margin-bottom:18px">Чтобы видеть их праздники и дарить подарки</p>
+    <h2 style="margin-bottom:4px" data-i18n="ob_friends_t"></h2>
+    <p class="muted" style="margin-bottom:18px" data-i18n="ob_friends_s"></p>
     <div class="card" style="text-align:left">
-      <div class="row" style="margin-bottom:10px"><div class="gav">📇</div><div style="flex:1"><b style="font-size:13px">Из контактов</b><div class="muted">Найти друзей, кто уже в Sagi Events</div></div><button class="btn tiny" onclick="toast('Демо: поиск по контактам')">Найти</button></div>
-      <div class="row"><div class="gav">🔗</div><div style="flex:1"><b style="font-size:13px">Пригласить по ссылке</b><div class="muted">sagi.events/u/sagi</div></div><button class="btn tiny" onclick="toast('Ссылка скопирована 🔗')">Копир.</button></div>
+      <div class="row" style="margin-bottom:10px"><span class="ic sm" id="ofr1"></span><div style="flex:1"><b style="font-size:13px" data-i18n="ob_contacts_t"></b><div class="muted" data-i18n="ob_contacts_s"></div></div><button class="btn tiny" onclick="toast(t('toast_contacts'))" data-i18n="ob_find"></button></div>
+      <div class="row"><span class="ic sm" id="ofr2"></span><div style="flex:1"><b style="font-size:13px" data-i18n="ob_invite_t"></b><div class="muted">sagi.events/u/sagi</div></div><button class="btn tiny" onclick="toast(t('toast_link'))" data-i18n="ob_copy"></button></div>
     </div>
-    <button class="btn" onclick="finishOnboarding()">Перейти в приложение</button>
-    <button class="btn sec" onclick="finishOnboarding()">Пропустить пока</button>
+    <button class="btn" onclick="finishOnboarding()" data-i18n="ob_go"></button>
+    <button class="btn sec" onclick="finishOnboarding()" data-i18n="ob_skip_now"></button>
   </div>
-
 </div></div>
 
 <div class="shell">
   <div class="topbar">
-    <div class="brand">Sagi Events<small>СОБЫТИЯ · ВИШЛИСТЫ</small></div>
+    <div class="brand">Sagi Events<small data-i18n="brand_sub"></small></div>
     <div class="topicons">
-      <div class="icobtn" onclick="go('notif')" id="bell">🔔</div>
-      <div class="icobtn" onclick="open_('mAccount')">⚙️</div>
+      <div class="icobtn" id="bell" onclick="go('notif')"></div>
+      <div class="icobtn" id="gearBtn" onclick="open_('mAccount')"></div>
     </div>
   </div>
 
-  <!-- ====== ЛЕНТА ====== -->
+  <!-- ЛЕНТА -->
   <div id="feed" class="screen active">
     <div class="hero" id="feedHero"></div>
     <div class="seg" id="feedSeg" style="display:none">
-      <button class="on" onclick="feedView(this,'list')">📋 Лента</button>
-      <button onclick="feedView(this,'cal')">📅 Календарь</button>
+      <button class="on" id="segList" onclick="feedView(this,'list')"></button>
+      <button id="segCal" onclick="feedView(this,'cal')"></button>
     </div>
     <div id="feedBody"></div>
     <div id="feedCal" style="display:none"></div>
   </div>
 
-  <!-- ====== ПРОФИЛЬ ====== -->
+  <!-- ПРОФИЛЬ (с вишлистом внутри) -->
   <div id="profile" class="screen">
     <div class="card" style="text-align:center">
-      <div class="avatar" id="pfAv" style="margin:0 auto 12px">🙂</div>
-      <h2 style="font-size:20px" id="pfName">Имя</h2>
-      <p class="muted" id="pfSub">Город</p>
+      <div class="avatar" id="pfAv" style="margin:0 auto 12px"></div>
+      <h2 style="font-size:20px" id="pfName"></h2>
+      <p class="muted" id="pfSub"></p>
       <div class="row" style="margin-top:16px">
-        <div class="stat"><b id="pfFriends">0</b><span>друзей</span></div>
-        <div class="stat"><b id="pfEvents">0</b><span>события</span></div>
-        <div class="stat"><b id="pfWishes">0</b><span>желаний</span></div>
+        <div class="stat"><b id="pfFriends">0</b><span data-i18n="p_friends"></span></div>
+        <div class="stat"><b id="pfEvents">0</b><span data-i18n="p_events"></span></div>
+        <div class="stat"><b id="pfWishes">0</b><span data-i18n="p_wishes"></span></div>
       </div>
-      <button class="btn sec" style="margin-top:14px" onclick="open_('mAccount')">Настройки и аккаунт</button>
+      <button class="btn sec" style="margin-top:14px" onclick="open_('mAccount')" data-i18n="p_settings"></button>
     </div>
-    <h3>Мой вишлист <span class="link" onclick="go('wishlist')">открыть →</span></h3>
-    <div id="pfWishBlock"></div>
-    <h3>Приватность</h3>
+
+    <h3><span data-i18n="p_my_wishlist"></span> <span class="link" id="wishToggle" onclick="toggleWishMode()"></span></h3>
+    <div id="wishItems"></div>
+    <button class="btn ico" id="addWishBtn" onclick="openAdd()"></button>
+    <div class="note" id="wishNote"></div>
+
+    <h3 data-i18n="p_privacy"></h3>
     <div class="card">
-      <label>Кто видит мой профиль</label>
-      <select><option>Только друзья</option><option>Публично</option><option>По ссылке</option></select>
-      <label>Дату рождения видят</label>
-      <select><option>Друзья (без года)</option><option>Все</option><option>Никто</option></select>
+      <label data-i18n="p_who_sees"></label>
+      <select id="selWho"></select>
+      <label data-i18n="p_bday_seen"></label>
+      <select id="selBday"></select>
     </div>
   </div>
 
-  <!-- ====== ВИШЛИСТ ====== -->
-  <div id="wishlist" class="screen">
-    <div class="hero" style="background:linear-gradient(135deg,#14b8a6,#4f7cf0)">
-      <h2>🎁 Мой вишлист</h2>
-      <p id="wishHeroSub">Добавь то, что хочешь получить в подарок</p>
-    </div>
-    <div class="seg" id="wishSeg">
-      <button class="on" onclick="wishView(this,'mine')">Мой список</button>
-      <button onclick="wishView(this,'friend')">Глазами друга</button>
-    </div>
-    <div id="wishMine">
-      <div id="wishItems"></div>
-      <button class="btn" onclick="openAdd()">＋ Добавить желание</button>
-      <div class="note" id="wishNote">💡 «Глазами друга» — как список видит гость: можно зарезервировать подарок или скинуться на общий, ты этого не увидишь.</div>
-    </div>
-    <div id="wishFriend" style="display:none">
-      <div class="muted" style="margin-bottom:12px">Так твой вишлист видит друг. Он может забронировать подарок или вложиться в совместный.</div>
-      <div id="wishFriendItems"></div>
-    </div>
-  </div>
-
-  <!-- ====== СОБЫТИЕ ====== -->
+  <!-- СОБЫТИЕ -->
   <div id="event" class="screen">
-    <div class="hero" style="background:linear-gradient(135deg,#36d399,#4f7cf0)">
-      <h2 id="evTitle">🎉 Новоселье у Дианы</h2>
-      <p id="evWhen">Сб, 28 июня · 19:00 · ул. Абая 10</p>
+    <div class="hero" style="background:linear-gradient(135deg,#14b8a6,#4f7cf0)">
+      <h2 id="evTitle"></h2>
+      <p id="evWhen"></p>
     </div>
     <div class="card">
       <div class="row" style="justify-content:space-between">
-        <div><b id="evCount">14</b> <span class="muted">придут</span></div>
-        <div><span class="muted">осталось</span> <b id="evDays">8 дней</b></div>
+        <div><b id="evCount">14</b> <span class="muted" data-i18n="e_count_come"></span></div>
+        <div><span class="muted" data-i18n="e_left"></span> <b id="evDays"></b></div>
       </div>
     </div>
-    <h3>Ты идёшь?</h3>
+    <h3 data-i18n="e_organizers"></h3>
+    <div class="card" id="orgs"></div>
+    <h3 data-i18n="e_rsvp_q"></h3>
     <div class="card">
-      <div class="seg" style="margin:0">
-        <button onclick="rsvp(this,'Приду')">✅ Приду</button>
-        <button onclick="rsvp(this,'Возможно')">🤔 Возможно</button>
-        <button onclick="rsvp(this,'Не приду')">✖ Не приду</button>
+      <div class="seg" id="rsvpSeg" style="margin:0">
+        <button onclick="rsvp(this,t('e_going'))" data-i18n="e_going"></button>
+        <button onclick="rsvp(this,t('e_maybe'))" data-i18n="e_maybe"></button>
+        <button onclick="rsvp(this,t('e_not_going'))" data-i18n="e_not_going"></button>
       </div>
-      <button class="btn sec" style="margin-top:12px" onclick="toast('Демо: добавлено в календарь 📅')">＋ В календарь</button>
+      <button class="btn sec" style="margin-top:12px" onclick="toast(t('toast_cal'))" data-i18n="e_add_cal"></button>
     </div>
-    <h3>Ссылки и ресурсы</h3>
+    <h3><span data-i18n="e_resources"></span></h3>
     <div id="resources"></div>
-    <h3>Гости <span class="link" onclick="toast('Демо: QR-чек-ин на входе')">QR чек-ин</span></h3>
+    <h3><span data-i18n="e_guests"></span> <span class="link" onclick="toast(t('toast_qr'))" data-i18n="e_qr"></span></h3>
     <div class="card" id="guests"></div>
-    <h3>Что принести <span class="link" onclick="toast('Демо: записаться')">записаться</span></h3>
+    <h3><span data-i18n="e_bring"></span> <span class="link" onclick="toast(t('toast_signup'))" data-i18n="e_signup"></span></h3>
     <div class="card" id="checklist"></div>
-    <h3>Фотоальбом <span class="link" onclick="toast('Демо: загрузить фото')">＋ фото</span></h3>
+    <h3><span data-i18n="e_album"></span> <span class="link" onclick="toast(t('toast_photo'))" data-i18n="e_add_photo"></span></h3>
     <div class="card" id="album"></div>
-    <h3>Обсуждение</h3>
+    <h3 data-i18n="e_discussion"></h3>
     <div class="card" id="wall"></div>
   </div>
 
-  <!-- ====== УВЕДОМЛЕНИЯ ====== -->
+  <!-- УВЕДОМЛЕНИЯ -->
   <div id="notif" class="screen">
-    <h3>Уведомления</h3>
+    <h3 data-i18n="n_title"></h3>
     <div id="notifList"></div>
   </div>
 </div>
 
-<button class="fab" onclick="openCreate()">＋</button>
+<button class="fab" id="fab" onclick="openCreate()"></button>
 
-<!-- таб-бар -->
 <div class="tabbar"><div class="inner">
-  <button class="tab on" data-s="feed" onclick="go('feed',this)"><span class="ic">🏠</span>Лента</button>
-  <button class="tab" data-s="wishlist" onclick="go('wishlist',this)"><span class="ic">🎁</span>Вишлист</button>
-  <button class="tab" data-s="profile" onclick="go('profile',this)"><span class="ic">👤</span>Профиль</button>
-  <button class="tab" data-s="notif" onclick="go('notif',this)"><span class="ic">🔔</span>Уведомл.</button>
+  <button class="tab on" data-s="feed" onclick="go('feed',this)"><span class="tic"></span><span data-i18n="tab_feed"></span></button>
+  <button class="tab" data-s="profile" onclick="go('profile',this)"><span class="tic"></span><span data-i18n="tab_profile"></span></button>
+  <button class="tab" data-s="notif" onclick="go('notif',this)"><span class="tic"></span><span data-i18n="tab_notif"></span></button>
 </div></div>
 
-<!-- модалка: аккаунт / настройки / выход -->
-<div class="modal" id="mAccount">
-  <div class="sheet">
-    <div class="grab"></div>
-    <div class="row" style="margin-bottom:16px">
-      <div class="avatar" id="acAv" style="width:50px;height:50px;font-size:22px">🙂</div>
-      <div><b id="acName">Имя</b><div class="muted" id="acMail">business@sagibonus.com</div></div>
-    </div>
-    <div class="ev" onclick="toast('Демо: редактировать профиль')"><div class="emoji">✏️</div><div class="meta"><b>Редактировать профиль</b></div><span class="pill">→</span></div>
-    <div class="ev" onclick="toast('Демо: приватность')"><div class="emoji">🔒</div><div class="meta"><b>Приватность</b></div><span class="pill">→</span></div>
-    <div class="ev" onclick="toast('Демо: уведомления')"><div class="emoji">🔔</div><div class="meta"><b>Уведомления</b></div><span class="pill">→</span></div>
-    <div class="ev" onclick="toast('Демо: язык — Русский / Қазақша')"><div class="emoji">🌐</div><div class="meta"><b>Язык</b><span>Русский</span></div><span class="pill">→</span></div>
-    <div class="ev" onclick="toast('Демо: помощь и поддержка')"><div class="emoji">❓</div><div class="meta"><b>Помощь</b></div><span class="pill">→</span></div>
-    <button class="btn danger" style="margin-top:8px" onclick="logout()">Выйти</button>
-    <button class="btn sec" onclick="close_('mAccount')">Закрыть</button>
+<!-- АККАУНТ -->
+<div class="modal" id="mAccount"><div class="sheet">
+  <div class="grab"></div>
+  <div class="row" style="margin-bottom:16px">
+    <div class="avatar" id="acAv" style="width:50px;height:50px;font-size:20px"></div>
+    <div><b id="acName"></b><div class="muted">business@sagibonus.com</div></div>
   </div>
-</div>
+  <label data-i18n="ac_lang"></label>
+  <div class="langseg" id="acLang" style="justify-content:flex-start"></div>
+  <div class="ev" onclick="toast(t('toast_edit'))"><span class="ic sm" id="acEdit"></span><div class="meta"><b data-i18n="ac_edit"></b></div></div>
+  <div class="ev" onclick="toast(t('toast_priv'))"><span class="ic sm" id="acPriv"></span><div class="meta"><b data-i18n="ac_privacy"></b></div></div>
+  <div class="ev" onclick="toast(t('toast_notif'))"><span class="ic sm" id="acNotif"></span><div class="meta"><b data-i18n="ac_notif"></b></div></div>
+  <div class="ev" onclick="toast(t('toast_help'))"><span class="ic sm" id="acHelp"></span><div class="meta"><b data-i18n="ac_help"></b></div></div>
+  <button class="btn danger" style="margin-top:8px" onclick="logout()" data-i18n="ac_logout"></button>
+  <button class="btn sec" onclick="close_('mAccount')" data-i18n="ac_close"></button>
+</div></div>
 
-<!-- модалка: создать ивент -->
-<div class="modal" id="mCreate">
-  <div class="sheet">
-    <div class="grab"></div>
-    <h3>Создать событие</h3>
-    <label>Тип</label>
-    <div id="evTypes">
-      <span class="chip on">🎂 День рождения</span><span class="chip">🎉 Праздник</span>
-      <span class="chip">🏠 Новоселье</span><span class="chip">💍 Свадьба</span><span class="chip">🍷 Встреча</span>
-    </div>
-    <label>Название</label><input placeholder="Например: Мой день рождения">
-    <label>Дата и время</label><input type="datetime-local">
-    <label>Место</label><input placeholder="Адрес или ссылка на онлайн">
-    <label>Приватность</label>
-    <select><option>По приглашению</option><option>По ссылке</option><option>Открытое</option></select>
-    <label>Ссылки и ресурсы для гостей</label>
-    <div id="resTypes">
-      <span class="chip on">📍 Карта / Google Maps</span><span class="chip">📹 Видеозвонок (Zoom/Meet)</span>
-      <span class="chip">🎵 Плейлист (Spotify)</span><span class="chip on">📁 Google Drive (фото)</span>
-      <span class="chip">🎁 Мой вишлист</span><span class="chip">👗 Дресс-код</span>
-    </div>
-    <input id="resLink" placeholder="Вставь ссылку — добавим в карточку события">
-    <div class="note">💡 Гости увидят все ссылки на странице события: маршрут на карте, ссылку на видеозвонок, общий Google Drive с фото, плейлист и твой вишлист.</div>
-    <button class="btn" onclick="createEvent()">Создать и пригласить</button>
-    <button class="btn sec" onclick="close_('mCreate')">Отмена</button>
-  </div>
-</div>
+<!-- СОЗДАТЬ СОБЫТИЕ -->
+<div class="modal" id="mCreate"><div class="sheet">
+  <div class="grab"></div>
+  <h3 data-i18n="c_title"></h3>
+  <label data-i18n="c_type"></label>
+  <div id="evTypes"></div>
+  <label data-i18n="c_name"></label><input data-i18n-ph="c_name_ph">
+  <label data-i18n="c_datetime"></label><input type="datetime-local">
+  <label data-i18n="c_place"></label><input data-i18n-ph="c_place_ph">
+  <label data-i18n="c_privacy"></label>
+  <select id="cPriv"></select>
+  <label data-i18n="c_links"></label>
+  <div id="resTypes"></div>
+  <input data-i18n-ph="c_link_ph">
+  <div class="note" data-i18n="c_links_note"></div>
+  <button class="btn" onclick="createEvent()" data-i18n="c_create"></button>
+  <button class="btn sec" onclick="close_('mCreate')" data-i18n="c_cancel"></button>
+</div></div>
 
-<!-- модалка: пригласить -->
-<div class="modal" id="mInvite">
-  <div class="sheet">
-    <div class="grab"></div>
-    <h3>Пригласить гостей</h3>
-    <div class="muted" style="margin-bottom:12px">Событие создано 🎉 Позови друзей.</div>
-    <label>Друзья в Sagi Events</label>
-    <div id="inviteFriends"></div>
-    <label style="margin-top:8px">Или ссылка-приглашение</label>
-    <div class="row">
-      <input id="inviteLink" value="sagi.events/e/aZ8kq" readonly style="margin:0">
-      <button class="btn tiny" onclick="toast('Ссылка скопирована 🔗')">Копир.</button>
-    </div>
-    <button class="btn" style="margin-top:14px" onclick="close_('mInvite');toast('Приглашения отправлены ✉️')">Готово</button>
-  </div>
-</div>
+<!-- ПРИГЛАСИТЬ -->
+<div class="modal" id="mInvite"><div class="sheet">
+  <div class="grab"></div>
+  <h3 data-i18n="i_title"></h3>
+  <div class="muted" style="margin-bottom:12px" data-i18n="i_sub"></div>
+  <label data-i18n="i_friends"></label>
+  <div id="inviteFriends"></div>
+  <label style="margin-top:8px" data-i18n="i_or_link"></label>
+  <div class="row"><input value="sagi.events/e/aZ8kq" readonly style="margin:0"><button class="btn tiny" onclick="toast(t('toast_link'))" data-i18n="i_copy"></button></div>
+  <button class="btn" style="margin-top:14px" onclick="close_('mInvite');toast(t('toast_invited'))" data-i18n="i_done"></button>
+</div></div>
 
-<!-- модалка: добавить желание -->
-<div class="modal" id="mAdd">
-  <div class="sheet">
-    <div class="grab"></div>
-    <h3>Добавить желание</h3>
-    <label>Ссылка на товар (подтянем фото и цену)</label>
-    <input id="addLink" placeholder="kaspi.kz/... или вставь ссылку">
-    <label>Название</label><input id="addName" placeholder="Беспроводные наушники">
-    <label>Цена, ₸</label><input id="addPrice" placeholder="89 000">
-    <label>Приоритет</label>
-    <select id="addPrio"><option>🔥 Очень хочу</option><option>Хочу</option><option>Было бы приятно</option></select>
-    <label>Заметка</label><input id="addNote" placeholder="Цвет чёрный">
-    <label><input type="checkbox" id="addJoint" style="width:auto;margin-right:8px">Разрешить совместный подарок (скидываемся)</label>
-    <button class="btn" onclick="addWish()">Добавить в вишлист</button>
-    <button class="btn sec" onclick="close_('mAdd')">Отмена</button>
-  </div>
-</div>
+<!-- ДОБАВИТЬ ЖЕЛАНИЕ -->
+<div class="modal" id="mAdd"><div class="sheet">
+  <div class="grab"></div>
+  <h3 data-i18n="aw_title"></h3>
+  <label data-i18n="aw_link"></label><input id="addLink" data-i18n-ph="aw_link_ph">
+  <label data-i18n="aw_name"></label><input id="addName" data-i18n-ph="aw_name_ph">
+  <label data-i18n="aw_price"></label><input id="addPrice" data-i18n-ph="aw_price_ph">
+  <label data-i18n="aw_prio"></label>
+  <select id="addPrio"></select>
+  <label data-i18n="aw_note"></label><input id="addNote" data-i18n-ph="aw_note_ph">
+  <label><input type="checkbox" id="addJoint" style="width:auto;margin-right:8px"> <span data-i18n="aw_joint"></span></label>
+  <button class="btn" onclick="addWish()" data-i18n="aw_add"></button>
+  <button class="btn sec" onclick="close_('mAdd')" data-i18n="c_cancel"></button>
+</div></div>
 
 <div class="toast" id="toast"></div>
 
 <script>
 const $=s=>document.querySelector(s);
-let t;
-function toast(m){const e=$("#toast");e.textContent=m;e.classList.add("show");clearTimeout(t);t=setTimeout(()=>e.classList.remove("show"),2200)}
+const $$=s=>document.querySelectorAll(s);
+let tt;function toast(m){const e=$("#toast");e.textContent=m;e.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>e.classList.remove("show"),2200)}
 function open_(id){$("#"+id).classList.add("show")}
 function close_(id){$("#"+id).classList.remove("show")}
 function openCreate(){open_("mCreate")}
 function openAdd(){open_("mAdd")}
 
-// ---------- состояние пользователя ----------
-let user={name:"",city:"",av:"🙂",isNew:true};
+// ---------- ИКОНКИ (SVG, без эмодзи) ----------
+const P={
+ bell:'<path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6"/><path d="M10 20a2 2 0 0 0 4 0"/>',
+ gear:'<circle cx="12" cy="12" r="3"/><path d="M19.4 13a7.5 7.5 0 0 0 0-2l2-1.5-2-3.5-2.3 1a7.5 7.5 0 0 0-1.7-1L15 3H9l-.4 2.9a7.5 7.5 0 0 0-1.7 1l-2.3-1-2 3.5L4.6 11a7.5 7.5 0 0 0 0 2l-2 1.5 2 3.5 2.3-1a7.5 7.5 0 0 0 1.7 1L9 21h6l.4-2.9a7.5 7.5 0 0 0 1.7-1l2.3 1 2-3.5Z"/>',
+ globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+ plus:'<path d="M12 5v14M5 12h14"/>',
+ list:'<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',
+ calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/>',
+ user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+ users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 21a6.5 6.5 0 0 1 13 0"/><path d="M16 5a3.5 3.5 0 0 1 0 7"/><path d="M18.5 21a6.5 6.5 0 0 0-3-5.5"/>',
+ gift:'<rect x="3" y="8" width="18" height="13" rx="1.5"/><path d="M3 12h18M12 8v13"/><path d="M12 8C12 8 10.5 3.5 8 4.5S9.5 8 12 8Zm0 0s1.5-4.5 4-3.5S14.5 8 12 8Z"/>',
+ cake:'<path d="M4 21h16M5 21v-7a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v7"/><path d="M4 16c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/><path d="M12 8V5M9 8V6.5M15 8V6.5"/>',
+ home:'<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/>',
+ briefcase:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/>',
+ utensils:'<path d="M6 3v8a2 2 0 0 0 4 0V3M8 11v10M17 3c-1.5 0-2.5 2-2.5 4.5S15.5 12 17 12m0-9v18"/>',
+ ring:'<circle cx="12" cy="14" r="6"/><path d="M9 8.5 10.5 4h3L15 8.5"/>',
+ party:'<path d="M3 21l5-13 8 8-13 5Z"/><path d="M14 7s.5-2 2.5-2M17 11s2 .2 3-2M11 4s.3-1 2-1"/>',
+ pin:'<path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/>',
+ folder:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/>',
+ music:'<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>',
+ video:'<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3Z"/>',
+ camera:'<path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><circle cx="12" cy="13" r="3.5"/>',
+ chat:'<path d="M21 12a8 8 0 0 1-11.5 7.2L4 21l1.8-5.5A8 8 0 1 1 21 12Z"/>',
+ edit:'<path d="M4 20h4L18 10l-4-4L4 16v4Z"/><path d="M13.5 6.5l4 4"/>',
+ lock:'<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>',
+ help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4 2c0 1.6-2 2-2 3.5"/><path d="M12 17.5h.01"/>',
+};
+function ic(n,sz){return `<svg viewBox="0 0 24 24" width="${sz||20}" height="${sz||20}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${P[n]||''}</svg>`}
 
-// демо-данные активного пользователя
+// ---------- ЯЗЫКИ ----------
+let lang="ru";
+const LANGS={ru:"Русский",kz:"Қазақша",en:"English"};
+const T={
+ ru:{
+  brand_sub:"СОБЫТИЯ И ВИШЛИСТЫ",demo_new:"Новый пользователь",demo_active:"Активный",
+  ob_welcome_sub:"Не забывай о праздниках близких и получай подарки, которые правда хочешь.",
+  ob_f1_t:"Дни рождения друзей",ob_f1_s:"Напомним заранее — не пропустишь",
+  ob_f2_t:"Свой вишлист",ob_f2_s:"Друзья дарят нужное, без дублей",
+  ob_f3_t:"Свои события",ob_f3_s:"От бизнес-форума до девичника",
+  ob_create_account:"Создать аккаунт",ob_minute:"Это займёт меньше минуты.",ob_have:"Уже есть аккаунт?",ob_login:"Войти",
+  ob_profile_t:"Создай профиль",ob_profile_s:"Так друзья тебя узнают",
+  ob_name:"Имя",ob_name_ph:"Как тебя зовут",ob_city:"Город",ob_city_ph:"Алматы",ob_next:"Дальше",
+  ob_bday_t:"Когда твой день рождения?",ob_bday_s:"Друзья получат напоминание. Год можно скрыть.",ob_bday_date:"Дата рождения",ob_hide_year:"Скрыть год от друзей",ob_skip:"Пропустить",
+  ob_friends_t:"Добавь друзей",ob_friends_s:"Чтобы видеть их праздники и дарить подарки",
+  ob_contacts_t:"Из контактов",ob_contacts_s:"Найти, кто уже в Sagi Events",ob_find:"Найти",
+  ob_invite_t:"Пригласить по ссылке",ob_copy:"Копировать",ob_go:"Перейти в приложение",ob_skip_now:"Пропустить пока",
+  tab_feed:"Лента",tab_profile:"Профиль",tab_notif:"Уведомления",
+  hello:"Привет, ",feed_week:"На этой неделе 2 дня рождения и 1 событие",feed_welcome:"Добро пожаловать! Давай заполним твою ленту.",
+  seg_list:"Лента",seg_cal:"Календарь",h_soon:"Скоро у друзей",h_my_events:"Мои события",link_profile:"профиль",
+  empty_quiet_t:"Пока тихо",empty_quiet_s:"Добавь друзей — и здесь появятся их праздники и события. Мы напомним заранее.",btn_add_friends:"Добавить друзей",
+  empty_event_t:"Создай первое событие",empty_event_s:"Бизнес-форум, ужин, день рождения — позови гостей в пару тапов.",btn_create_event:"Создать событие",
+  cal_month:"Июнь 2026",cal_activities:"Активности месяца",
+  p_friends:"друзей",p_events:"события",p_wishes:"желаний",p_settings:"Настройки и аккаунт",
+  p_my_wishlist:"Мой вишлист",p_privacy:"Приватность",p_who_sees:"Кто видит мой профиль",p_bday_seen:"Дату рождения видят",
+  p_only_friends:"Только друзья",p_public:"Публично",p_by_link:"По ссылке",p_friends_noyear:"Друзья (без года)",p_all:"Все",p_nobody:"Никто",
+  pw_my_list:"Мой список",pw_friend_view:"Глазами друга",pw_add:"Добавить желание",
+  pw_note:"«Глазами друга» — как список видит гость: он может зарезервировать подарок или скинуться на общий, а ты этого не увидишь.",
+  pw_friend_desc:"Так твой вишлист видит друг. Он может забронировать подарок или вложиться в совместный.",
+  pw_occupied:"Занято",pw_gift:"Дарю это",pw_chip_in:"Вложиться",pw_joint:"Совместный",pw_collected:"собрано",
+  pw_empty_t:"Список желаний пуст",pw_empty_s:"Добавь первое желание со ссылкой, ценой и приоритетом.",
+  e_count_come:"придут",e_left:"осталось",e_days:"дн.",e_organizers:"Организаторы",e_organizer:"Организатор",e_coorg:"Со-организатор",
+  e_rsvp_q:"Ты идёшь?",e_going:"Приду",e_maybe:"Возможно",e_not_going:"Не приду",e_add_cal:"В календарь",
+  e_resources:"Ссылки и ресурсы",e_open:"открыть",e_guests:"Гости",e_qr:"QR чек-ин",
+  e_will:"Придёт",e_thinks:"Думает",e_wont:"Не придёт",
+  e_bring:"Что принести",e_signup:"записаться",e_album:"Фотоальбом",e_add_photo:"добавить фото",e_album_note:"Гости загружают фото после события — все воспоминания в одном месте.",
+  e_discussion:"Обсуждение",e_write:"Написать пожелание или вопрос...",
+  c_title:"Создать событие",c_type:"Тип",c_name:"Название",c_name_ph:"Например: Бизнес-завтрак с инвесторами",c_datetime:"Дата и время",c_place:"Место",c_place_ph:"Адрес или ссылка на онлайн",
+  c_privacy:"Приватность",c_by_invite:"По приглашению",c_by_link:"По ссылке",c_open:"Открытое",
+  c_links:"Ссылки и ресурсы для гостей",c_link_ph:"Вставь ссылку — добавим в карточку",c_links_note:"Гости увидят все ссылки на странице события: карту, видеозвонок, Google Drive с фото, плейлист и вишлист.",
+  c_create:"Создать и пригласить",c_cancel:"Отмена",
+  i_title:"Пригласить гостей",i_sub:"Событие создано. Позови друзей.",i_friends:"Друзья в Sagi Events",i_or_link:"Или ссылка-приглашение",i_copy:"Копировать",i_done:"Готово",
+  aw_title:"Добавить желание",aw_link:"Ссылка на товар",aw_link_ph:"kaspi.kz/... или вставь ссылку",aw_name:"Название",aw_name_ph:"Беспроводные наушники",aw_price:"Цена, ₸",aw_price_ph:"89 000",
+  aw_prio:"Приоритет",aw_prio1:"Очень хочу",aw_prio2:"Хочу",aw_prio3:"Было бы приятно",aw_note:"Заметка",aw_note_ph:"Цвет чёрный",aw_joint:"Разрешить совместный подарок (скидываемся)",aw_add:"Добавить в вишлист",
+  ac_lang:"Язык",ac_edit:"Редактировать профиль",ac_privacy:"Приватность",ac_notif:"Уведомления",ac_help:"Помощь",ac_logout:"Выйти",ac_close:"Закрыть",
+  n_title:"Уведомления",n_empty_t:"Уведомлений нет",n_empty_s:"Здесь появятся напоминания о праздниках, ответы на приглашения и брони подарков.",
+  toast_contacts:"Демо: поиск по контактам",toast_link:"Ссылка скопирована",toast_invited:"Приглашения отправлены",toast_cal:"Демо: добавлено в календарь",toast_qr:"Демо: QR-чек-ин на входе",toast_signup:"Демо: записаться",toast_photo:"Демо: загрузить фото",toast_edit:"Демо: редактировать профиль",toast_priv:"Демо: приватность",toast_notif:"Демо: уведомления",toast_help:"Демо: помощь",toast_friend:"Демо: профиль друга",toast_reserved:"Ты зарезервировал подарок — именинник не увидит",toast_chipin:"Ты вложился в общий подарок",toast_added:"Желание добавлено",toast_welcome:"Добро пожаловать в Sagi Events",toast_logout:"Ты вышел из аккаунта",toast_msg:"Демо: сообщение отправлено",toast_prevm:"Демо: предыдущий месяц",toast_nextm:"Демо: следующий месяц",toast_open:"Демо: открыть",
+  weekdays:["Пн","Вт","Ср","Чт","Пт","Сб","Вс"],
+  types:{business_forum:"Бизнес-форум",business_breakfast:"Бизнес-завтрак",gender_party:"Gender party",bachelorette:"Девичник",dinner:"Ужин",birthday:"День рождения",housewarming:"Новоселье",wedding:"Свадьба",meetup:"Встреча",just_because:"Просто так"}
+ },
+ kz:{
+  brand_sub:"ОҚИҒАЛАР МЕН ТІЛЕКТЕР",demo_new:"Жаңа қолданушы",demo_active:"Белсенді",
+  ob_welcome_sub:"Жақындарыңның мерекелерін ұмытпа және шынымен қалаған сыйлықтарыңды ал.",
+  ob_f1_t:"Достардың туған күндері",ob_f1_s:"Алдын ала еске саламыз",
+  ob_f2_t:"Жеке тілектер тізімі",ob_f2_s:"Достар керектіні сыйлайды, қайталанбай",
+  ob_f3_t:"Жеке оқиғалар",ob_f3_s:"Бизнес-форумнан қыздар кешіне дейін",
+  ob_create_account:"Тіркелгі жасау",ob_minute:"Бір минуттан аз уақыт алады.",ob_have:"Тіркелгі бар ма?",ob_login:"Кіру",
+  ob_profile_t:"Профиль жаса",ob_profile_s:"Достар сені осылай таниды",
+  ob_name:"Аты",ob_name_ph:"Атың кім",ob_city:"Қала",ob_city_ph:"Алматы",ob_next:"Әрі қарай",
+  ob_bday_t:"Туған күнің қашан?",ob_bday_s:"Достарға еске салу келеді. Жылды жасыруға болады.",ob_bday_date:"Туған күні",ob_hide_year:"Жылды достардан жасыру",ob_skip:"Өткізу",
+  ob_friends_t:"Достарды қос",ob_friends_s:"Олардың мерекелерін көру және сыйлық беру үшін",
+  ob_contacts_t:"Контактілерден",ob_contacts_s:"Sagi Events-тегілерді табу",ob_find:"Табу",
+  ob_invite_t:"Сілтеме арқылы шақыру",ob_copy:"Көшіру",ob_go:"Қолданбаға өту",ob_skip_now:"Әзірге өткізу",
+  tab_feed:"Таспа",tab_profile:"Профиль",tab_notif:"Хабарламалар",
+  hello:"Сәлем, ",feed_week:"Осы аптада 2 туған күн және 1 оқиға",feed_welcome:"Қош келдің! Таспаңды толтырайық.",
+  seg_list:"Таспа",seg_cal:"Күнтізбе",h_soon:"Достарда жақында",h_my_events:"Менің оқиғаларым",link_profile:"профиль",
+  empty_quiet_t:"Әзірге тыныш",empty_quiet_s:"Достарды қос — олардың мерекелері осында пайда болады.",btn_add_friends:"Достарды қосу",
+  empty_event_t:"Алғашқы оқиғаңды жаса",empty_event_s:"Бизнес-форум, кешкі ас, туған күн — қонақтарды бірнеше түрту арқылы шақыр.",btn_create_event:"Оқиға жасау",
+  cal_month:"Маусым 2026",cal_activities:"Ай оқиғалары",
+  p_friends:"дос",p_events:"оқиға",p_wishes:"тілек",p_settings:"Баптаулар мен тіркелгі",
+  p_my_wishlist:"Менің тілектерім",p_privacy:"Құпиялылық",p_who_sees:"Профильді кім көреді",p_bday_seen:"Туған күнді кім көреді",
+  p_only_friends:"Тек достар",p_public:"Ашық",p_by_link:"Сілтеме бойынша",p_friends_noyear:"Достар (жылсыз)",p_all:"Барлығы",p_nobody:"Ешкім",
+  pw_my_list:"Менің тізімім",pw_friend_view:"Дос көзімен",pw_add:"Тілек қосу",
+  pw_note:"«Дос көзімен» — тізімді қонақ қалай көреді: ол сыйлықты брондай алады немесе ортаққа қосыла алады, ал сен оны көрмейсің.",
+  pw_friend_desc:"Достарың тілегіңді осылай көреді. Олар сыйлықты брондай немесе ортаққа қосыла алады.",
+  pw_occupied:"Бос емес",pw_gift:"Мен сыйлаймын",pw_chip_in:"Қосылу",pw_joint:"Ортақ",pw_collected:"жиналды",
+  pw_empty_t:"Тілектер тізімі бос",pw_empty_s:"Сілтемесі, бағасы және басымдығы бар алғашқы тілекті қос.",
+  e_count_come:"келеді",e_left:"қалды",e_days:"күн",e_organizers:"Ұйымдастырушылар",e_organizer:"Ұйымдастырушы",e_coorg:"Қосалқы ұйымдастырушы",
+  e_rsvp_q:"Барасың ба?",e_going:"Барамын",e_maybe:"Мүмкін",e_not_going:"Бармаймын",e_add_cal:"Күнтізбеге",
+  e_resources:"Сілтемелер мен ресурстар",e_open:"ашу",e_guests:"Қонақтар",e_qr:"QR тіркелу",
+  e_will:"Келеді",e_thinks:"Ойлануда",e_wont:"Келмейді",
+  e_bring:"Не әкелу керек",e_signup:"жазылу",e_album:"Фотоальбом",e_add_photo:"фото қосу",e_album_note:"Қонақтар оқиғадан кейін фото жүктейді — барлық естеліктер бір жерде.",
+  e_discussion:"Талқылау",e_write:"Тілек немесе сұрақ жазу...",
+  c_title:"Оқиға жасау",c_type:"Түрі",c_name:"Атауы",c_name_ph:"Мысалы: инвесторлармен бизнес-таңғы ас",c_datetime:"Күні мен уақыты",c_place:"Орны",c_place_ph:"Мекенжай немесе онлайн сілтеме",
+  c_privacy:"Құпиялылық",c_by_invite:"Шақыру бойынша",c_by_link:"Сілтеме бойынша",c_open:"Ашық",
+  c_links:"Қонақтарға арналған сілтемелер",c_link_ph:"Сілтемені қой — картаға қосамыз",c_links_note:"Қонақтар оқиға бетінде барлық сілтемелерді көреді: карта, видеоқоңырау, Google Drive, плейлист және тілектер.",
+  c_create:"Жасау және шақыру",c_cancel:"Болдырмау",
+  i_title:"Қонақтарды шақыру",i_sub:"Оқиға жасалды. Достарды шақыр.",i_friends:"Sagi Events-тегі достар",i_or_link:"Немесе шақыру сілтемесі",i_copy:"Көшіру",i_done:"Дайын",
+  aw_title:"Тілек қосу",aw_link:"Тауар сілтемесі",aw_link_ph:"kaspi.kz/... немесе сілтеме қой",aw_name:"Атауы",aw_name_ph:"Сымсыз құлаққап",aw_price:"Бағасы, ₸",aw_price_ph:"89 000",
+  aw_prio:"Басымдық",aw_prio1:"Қатты қалаймын",aw_prio2:"Қалаймын",aw_prio3:"Жаман болмас еді",aw_note:"Ескертпе",aw_note_ph:"Қара түсті",aw_joint:"Ортақ сыйлыққа рұқсат ету",aw_add:"Тізімге қосу",
+  ac_lang:"Тіл",ac_edit:"Профильді өңдеу",ac_privacy:"Құпиялылық",ac_notif:"Хабарламалар",ac_help:"Көмек",ac_logout:"Шығу",ac_close:"Жабу",
+  n_title:"Хабарламалар",n_empty_t:"Хабарлама жоқ",n_empty_s:"Мұнда мерекелер туралы еске салулар мен жауаптар пайда болады.",
+  toast_contacts:"Демо: контактілерден іздеу",toast_link:"Сілтеме көшірілді",toast_invited:"Шақырулар жіберілді",toast_cal:"Демо: күнтізбеге қосылды",toast_qr:"Демо: кірудегі QR тіркелу",toast_signup:"Демо: жазылу",toast_photo:"Демо: фото жүктеу",toast_edit:"Демо: профильді өңдеу",toast_priv:"Демо: құпиялылық",toast_notif:"Демо: хабарламалар",toast_help:"Демо: көмек",toast_friend:"Демо: дос профилі",toast_reserved:"Сыйлықты брондадың — иесі көрмейді",toast_chipin:"Ортақ сыйлыққа қосылдың",toast_added:"Тілек қосылды",toast_welcome:"Sagi Events-ке қош келдің",toast_logout:"Тіркелгіден шықтың",toast_msg:"Демо: хабарлама жіберілді",toast_prevm:"Демо: алдыңғы ай",toast_nextm:"Демо: келесі ай",toast_open:"Демо: ашу",
+  weekdays:["Дс","Сс","Ср","Бс","Жм","Сб","Жс"],
+  types:{business_forum:"Бизнес-форум",business_breakfast:"Бизнес-таңғы ас",gender_party:"Gender party",bachelorette:"Қыздар кеші",dinner:"Кешкі ас",birthday:"Туған күн",housewarming:"Үйтойы",wedding:"Той",meetup:"Кездесу",just_because:"Жай ғана"}
+ },
+ en:{
+  brand_sub:"EVENTS & WISHLISTS",demo_new:"New user",demo_active:"Active",
+  ob_welcome_sub:"Never miss your loved ones' celebrations and get gifts you actually want.",
+  ob_f1_t:"Friends' birthdays",ob_f1_s:"We remind you in advance",
+  ob_f2_t:"Your wishlist",ob_f2_s:"Friends gift the right thing, no duplicates",
+  ob_f3_t:"Your events",ob_f3_s:"From business forum to bachelorette",
+  ob_create_account:"Create account",ob_minute:"Takes less than a minute.",ob_have:"Already have an account?",ob_login:"Log in",
+  ob_profile_t:"Create your profile",ob_profile_s:"So friends recognize you",
+  ob_name:"Name",ob_name_ph:"Your name",ob_city:"City",ob_city_ph:"Almaty",ob_next:"Next",
+  ob_bday_t:"When is your birthday?",ob_bday_s:"Friends get a reminder. You can hide the year.",ob_bday_date:"Date of birth",ob_hide_year:"Hide year from friends",ob_skip:"Skip",
+  ob_friends_t:"Add friends",ob_friends_s:"To see their celebrations and give gifts",
+  ob_contacts_t:"From contacts",ob_contacts_s:"Find who's already on Sagi Events",ob_find:"Find",
+  ob_invite_t:"Invite by link",ob_copy:"Copy",ob_go:"Go to the app",ob_skip_now:"Skip for now",
+  tab_feed:"Feed",tab_profile:"Profile",tab_notif:"Notifications",
+  hello:"Hi, ",feed_week:"This week: 2 birthdays and 1 event",feed_welcome:"Welcome! Let's fill your feed.",
+  seg_list:"Feed",seg_cal:"Calendar",h_soon:"Coming up for friends",h_my_events:"My events",link_profile:"profile",
+  empty_quiet_t:"All quiet",empty_quiet_s:"Add friends — their celebrations and events will show up here. We'll remind you in advance.",btn_add_friends:"Add friends",
+  empty_event_t:"Create your first event",empty_event_s:"Business forum, dinner, birthday — invite guests in a couple of taps.",btn_create_event:"Create event",
+  cal_month:"June 2026",cal_activities:"This month",
+  p_friends:"friends",p_events:"events",p_wishes:"wishes",p_settings:"Settings & account",
+  p_my_wishlist:"My wishlist",p_privacy:"Privacy",p_who_sees:"Who sees my profile",p_bday_seen:"Birthday visible to",
+  p_only_friends:"Friends only",p_public:"Public",p_by_link:"By link",p_friends_noyear:"Friends (no year)",p_all:"Everyone",p_nobody:"Nobody",
+  pw_my_list:"My list",pw_friend_view:"Friend's view",pw_add:"Add a wish",
+  pw_note:"\"Friend's view\" shows how a guest sees the list: they can reserve a gift or chip in, and you won't see it — the surprise stays.",
+  pw_friend_desc:"This is how a friend sees your wishlist. They can reserve a gift or chip into a joint one.",
+  pw_occupied:"Taken",pw_gift:"I'll gift this",pw_chip_in:"Chip in",pw_joint:"Joint",pw_collected:"collected",
+  pw_empty_t:"Your wishlist is empty",pw_empty_s:"Add your first wish with a link, price and priority.",
+  e_count_come:"going",e_left:"left",e_days:"d",e_organizers:"Organizers",e_organizer:"Organizer",e_coorg:"Co-organizer",
+  e_rsvp_q:"Are you going?",e_going:"Going",e_maybe:"Maybe",e_not_going:"Not going",e_add_cal:"Add to calendar",
+  e_resources:"Links & resources",e_open:"open",e_guests:"Guests",e_qr:"QR check-in",
+  e_will:"Going",e_thinks:"Maybe",e_wont:"Not going",
+  e_bring:"What to bring",e_signup:"sign up",e_album:"Photo album",e_add_photo:"add photo",e_album_note:"Guests upload photos after the event — all memories in one place.",
+  e_discussion:"Discussion",e_write:"Write a wish or question...",
+  c_title:"Create event",c_type:"Type",c_name:"Title",c_name_ph:"e.g. Business breakfast with investors",c_datetime:"Date & time",c_place:"Place",c_place_ph:"Address or online link",
+  c_privacy:"Privacy",c_by_invite:"By invite",c_by_link:"By link",c_open:"Open",
+  c_links:"Links & resources for guests",c_link_ph:"Paste a link — we'll add it to the card",c_links_note:"Guests will see all links on the event page: map, video call, Google Drive with photos, playlist and wishlist.",
+  c_create:"Create & invite",c_cancel:"Cancel",
+  i_title:"Invite guests",i_sub:"Event created. Invite your friends.",i_friends:"Friends on Sagi Events",i_or_link:"Or an invite link",i_copy:"Copy",i_done:"Done",
+  aw_title:"Add a wish",aw_link:"Product link",aw_link_ph:"kaspi.kz/... or paste a link",aw_name:"Name",aw_name_ph:"Wireless headphones",aw_price:"Price, ₸",aw_price_ph:"89 000",
+  aw_prio:"Priority",aw_prio1:"Really want",aw_prio2:"Want",aw_prio3:"Would be nice",aw_note:"Note",aw_note_ph:"Black color",aw_joint:"Allow a joint gift (chip in)",aw_add:"Add to wishlist",
+  ac_lang:"Language",ac_edit:"Edit profile",ac_privacy:"Privacy",ac_notif:"Notifications",ac_help:"Help",ac_logout:"Log out",ac_close:"Close",
+  n_title:"Notifications",n_empty_t:"No notifications",n_empty_s:"Reminders about celebrations, RSVP replies and gift reservations will appear here.",
+  toast_contacts:"Demo: search contacts",toast_link:"Link copied",toast_invited:"Invitations sent",toast_cal:"Demo: added to calendar",toast_qr:"Demo: QR check-in at the door",toast_signup:"Demo: sign up",toast_photo:"Demo: upload photo",toast_edit:"Demo: edit profile",toast_priv:"Demo: privacy",toast_notif:"Demo: notifications",toast_help:"Demo: help",toast_friend:"Demo: friend's profile",toast_reserved:"You reserved the gift — the birthday person won't see it",toast_chipin:"You chipped into the joint gift",toast_added:"Wish added",toast_welcome:"Welcome to Sagi Events",toast_logout:"You logged out",toast_msg:"Demo: message sent",toast_prevm:"Demo: previous month",toast_nextm:"Demo: next month",toast_open:"Demo: open",
+  weekdays:["Mo","Tu","We","Th","Fr","Sa","Su"],
+  types:{business_forum:"Business forum",business_breakfast:"Business breakfast",gender_party:"Gender party",bachelorette:"Bachelorette",dinner:"Dinner",birthday:"Birthday",housewarming:"Housewarming",wedding:"Wedding",meetup:"Meetup",just_because:"Just because"}
+ }
+};
+function t(k){return (T[lang] && T[lang][k]!=null)?T[lang][k]:(T.ru[k]!=null?T.ru[k]:k)}
+function typeLabel(k){return (T[lang].types[k]||T.ru.types[k]||k)}
+const typeIcon={business_forum:"briefcase",business_breakfast:"briefcase",gender_party:"party",bachelorette:"party",dinner:"utensils",birthday:"cake",housewarming:"home",wedding:"ring",meetup:"users",just_because:"gift"};
+
+// ---------- ДАННЫЕ ----------
+let user={name:"",city:"",av:"",isNew:true};
+let wishMode="mine";
 const D={
-  feed:[
-    {e:"🎂",t:"Айдар Сапаров",s:"День рождения",p:"через 3 дня",soon:true,ev:false},
-    {e:"🏠",t:"Новоселье у Дианы",s:"Сб, 28 июня · 19:00",p:"через 8 дней",soon:false,ev:true},
-    {e:"🎂",t:"Малика Ж.",s:"День рождения",p:"через 6 дней",soon:true,ev:false},
-    {e:"💍",t:"Свадьба Ержана и Камилы",s:"12 июля · 17:00",p:"через 22 дня",soon:false,ev:true},
-  ],
-  mine:[
-    {e:"🎂",t:"Мой день рождения",s:"12 августа · вишлист прикреплён",p:"через 53 дня"},
-    {e:"🍷",t:"Встреча команды Sagi",s:"5 июля · 20:00",p:"через 15 дней"},
-  ],
-  wishes:[
-    {e:"🎧",t:"Беспроводные наушники",pr:"89 000 ₸",prio:"🔥 Очень хочу",note:"Цвет чёрный",res:false,joint:false,collected:0},
-    {e:"📚",t:"Книга «Атлант расправил плечи»",pr:"7 500 ₸",prio:"Хочу",note:"",res:true,joint:false,collected:0},
-    {e:"⌚",t:"Смарт-часы Garmin",pr:"320 000 ₸",prio:"🔥 Очень хочу",note:"Совместный подарок",res:false,joint:true,collected:60},
-    {e:"☕",t:"Кофемашина",pr:"145 000 ₸",prio:"Было бы приятно",note:"",res:false,joint:true,collected:25},
-  ],
-  notifs:[
-    {e:"🎁",t:"Кто-то зарезервировал подарок из твоего вишлиста",s:"только что"},
-    {e:"✅",t:"Айдар придёт на «Встречу команды Sagi»",s:"1 ч назад"},
-    {e:"💰",t:"На «Смарт-часы Garmin» собрано 60%",s:"3 ч назад"},
-    {e:"🎂",t:"Через 3 дня день рождения Айдара",s:"сегодня"},
-    {e:"✉️",t:"Диана пригласила тебя на новоселье",s:"вчера"},
-  ],
+ feed:[
+  {ty:"birthday",t:"Айдар Сапаров",cat:true,p:"+3",soon:true,ev:false},
+  {ty:"business_forum",t:"Бизнес-форум Digital Almaty",s:"Чт, 25 июня · 10:00",p:"+4",ev:true},
+  {ty:"bachelorette",t:"Девичник Камилы",s:"Сб, 27 июня · 18:00",p:"+6",ev:true},
+  {ty:"birthday",t:"Малика Ж.",cat:true,p:"+6",soon:true,ev:false},
+  {ty:"business_breakfast",t:"Бизнес-завтрак с инвесторами",s:"5 июля · 09:00",p:"+15",ev:true},
+ ],
+ mine:[
+  {ty:"birthday",t:"Мой день рождения",s:"12 августа",p:"+53",ev:false},
+  {ty:"dinner",t:"Ужин с командой Sagi",s:"5 июля · 20:00",p:"+15",ev:true},
+ ],
+ wishes:[
+  {ty:"gift",t:"Беспроводные наушники",pr:"89 000 ₸",prio:"aw_prio1",note:"",res:false,joint:false,collected:0},
+  {ty:"gift",t:"Книга «Атлант расправил плечи»",pr:"7 500 ₸",prio:"aw_prio2",note:"",res:true,joint:false,collected:0},
+  {ty:"gift",t:"Смарт-часы Garmin",pr:"320 000 ₸",prio:"aw_prio1",note:"",res:false,joint:true,collected:60},
+ ],
+ notifs:[
+  {ic:"gift",t:"Кто-то зарезервировал подарок из твоего вишлиста",s:"только что"},
+  {ic:"users",t:"Айдар придёт на «Ужин с командой Sagi»",s:"1 ч"},
+  {ic:"cake",t:"Через 3 дня день рождения Айдара",s:"сегодня"},
+ ],
 };
 const friends=["Айдар","Малика","Ержан","Диана","Камила"];
 const guests=[{n:"Айдар",s:"yes"},{n:"Малика",s:"yes"},{n:"Ержан",s:"maybe"},{n:"Камила",s:"no"},{n:"Тимур",s:"yes"}];
-const checklist=[{w:"🎂 Торт",who:"Малика"},{w:"🍕 Еда",who:"Айдар"},{w:"🔊 Музыка",who:"свободно"},{w:"🥤 Напитки",who:"Тимур"}];
-const resources=[
-  {e:"📍",t:"Маршрут на карте",s:"ул. Абая 10 · 12 мин на такси",a:"карту"},
-  {e:"📁",t:"Google Drive — фото и видео",s:"Общая папка · все могут загружать",a:"папку"},
-  {e:"🎵",t:"Плейлист вечера",s:"Spotify · добавь свои треки",a:"плейлист"},
-  {e:"📹",t:"Ссылка на видеозвонок",s:"Для тех, кто не сможет прийти",a:"звонок"},
-  {e:"🎁",t:"Вишлист Дианы",s:"Что подарить на новоселье",a:"вишлист"},
-];
-const album=["🖼️","📷","🎉","🥳","🍰","✨"];
-const wall=[{n:"Айдар",m:"Буду точно! Принесу колонку 🔊"},{n:"Малика",m:"Поздравляю с новосельем 🎉 Торт за мной"},{n:"Тимур",m:"А дресс-код есть?"}];
-
-// рабочие массивы (зависят от режима)
+const orgs=[{n:"Диана",r:"e_organizer"},{n:"Айдар",r:"e_coorg"}];
+const checklist=[{w:"Торт",who:"Малика"},{w:"Еда",who:"Айдар"},{w:"Музыка",who:"—"},{w:"Напитки",who:"Тимур"}];
+const calEvents={24:"cake",25:"briefcase",27:"party"};
 let feed=[],mine=[],wishes=[],notifs=[];
 
-// ---------- рендер ----------
-function card(o,onclick){return `<div class="ev" ${onclick?`onclick="${onclick}"`:''}>
-  <div class="emoji">${o.e}</div><div class="meta"><b>${o.t}</b><span>${o.s}</span></div>
-  <span class="pill ${o.soon?'soon':''}">${o.p}</span></div>`;}
+// ---------- i18n применение ----------
+function applyI18n(){
+  document.documentElement.lang=lang;
+  $$("[data-i18n]").forEach(e=>e.textContent=t(e.getAttribute("data-i18n")));
+  $$("[data-i18n-ph]").forEach(e=>e.placeholder=t(e.getAttribute("data-i18n-ph")));
+  // иконки статичные
+  $("#bell").innerHTML=ic("bell"); $("#gearBtn").innerHTML=ic("gear");
+  $("#fab").innerHTML=ic("plus",26);
+  $("#of1").innerHTML=ic("cake"); $("#of2").innerHTML=ic("gift"); $("#of3").innerHTML=ic("party");
+  $("#ofr1").innerHTML=ic("users"); $("#ofr2").innerHTML=ic("pin");
+  $("#acEdit").innerHTML=ic("edit"); $("#acPriv").innerHTML=ic("lock"); $("#acNotif").innerHTML=ic("bell"); $("#acHelp").innerHTML=ic("help");
+  $("#segList").innerHTML=ic("list",16)+" "+t("seg_list");
+  $("#segCal").innerHTML=ic("calendar",16)+" "+t("seg_cal");
+  document.querySelectorAll(".tab").forEach(tb=>{const m={feed:"list",profile:"user",notif:"bell"};tb.querySelector(".tic").innerHTML=ic(m[tb.dataset.s],20)});
+  $("#addWishBtn").innerHTML=ic("plus",16)+" "+t("pw_add");
+  $("#wishToggle").textContent=wishMode=="mine"?t("pw_friend_view"):t("pw_my_list");
+  // селекты
+  $("#selWho").innerHTML=[t("p_only_friends"),t("p_public"),t("p_by_link")].map(o=>`<option>${o}</option>`).join("");
+  $("#selBday").innerHTML=[t("p_friends_noyear"),t("p_all"),t("p_nobody")].map(o=>`<option>${o}</option>`).join("");
+  $("#cPriv").innerHTML=[t("c_by_invite"),t("c_by_link"),t("c_open")].map(o=>`<option>${o}</option>`).join("");
+  $("#addPrio").innerHTML=["aw_prio1","aw_prio2","aw_prio3"].map(o=>`<option>${t(o)}</option>`).join("");
+  // типы событий
+  $("#evTypes").innerHTML=Object.keys(typeIcon).map((k,i)=>`<span class="chip${i==0?' on':''}" onclick="pickType(this)">${typeLabel(k)}</span>`).join("");
+  // ресурсы (создание)
+  $("#resTypes").innerHTML=[["pin","Карта / Google Maps"],["video","Видеозвонок"],["music","Плейлист"],["folder","Google Drive"],["gift",t("p_my_wishlist")]].map((r,i)=>`<span class="chip${i==0||i==3?' on':''}" onclick="this.classList.toggle('on')">${r[1]}</span>`).join("");
+  // языковые переключатели
+  const langBtns=l=>Object.keys(LANGS).map(k=>`<button class="${k==lang?'on':''}" onclick="setLang('${k}')">${LANGS[k]}</button>`).join("");
+  $("#obLang").innerHTML=langBtns(); $("#acLang").innerHTML=langBtns();
+  $("#fab").style.display = user.isNew? "none":"flex";
+}
+function setLang(l){lang=l; applyI18n(); renderAll();}
 
+// ---------- рендер ----------
+function evRow(o,onclick){
+  const cat = o.cat? typeLabel("birthday") : typeLabel(o.ty);
+  return `<div class="ev" ${onclick?`onclick="${onclick}"`:''}>
+    <div class="ic">${ic(typeIcon[o.ty]||"calendar")}</div>
+    <div class="meta"><b>${o.t}</b><span>${o.s||cat}</span>${o.cat?`<span class="cat">${cat}</span>`:''}</div>
+    <span class="pill ${o.soon?'soon':''}">${o.p}${t("e_days")==='d'?'d':''}</span></div>`;
+}
 function renderAll(){
   const newU=user.isNew;
-  // hero
   $("#feedHero").innerHTML = newU
-    ? `<h2>Привет, ${user.name||'друг'} 👋</h2><p>Добро пожаловать в Sagi Events! Давай заполним твою ленту.</p>`
-    : `<h2>Привет, ${user.name||'Саги'} 👋</h2><p>На этой неделе 2 дня рождения и 1 событие</p>`;
-  // лента
+    ? `<h2>${t("hello")}${user.name||''}</h2><p>${t("feed_welcome")}</p>`
+    : `<h2>${t("hello")}${user.name||'Саги'}</h2><p>${t("feed_week")}</p>`;
   $("#feedSeg").style.display = newU? "none":"flex";
   if(newU){
     $("#feedCal").style.display="none"; $("#feedBody").style.display="block";
     $("#feedBody").innerHTML=`
-      <div class="empty"><div class="big">👥</div><b>Пока тихо</b>
-        <p>Добавь друзей — и здесь появятся их дни рождения и события. Мы напомним заранее.</p>
-        <button class="btn" onclick="toast('Демо: добавить друзей')">Добавить друзей</button></div>
-      <div class="empty"><div class="big">🎉</div><b>Создай первое событие</b>
-        <p>День рождения, встреча, новоселье — позови гостей в пару тапов.</p>
-        <button class="btn sec" onclick="openCreate()">Создать событие</button></div>`;
+      <div class="empty"><div class="eic">${ic("users",36)}</div><b>${t("empty_quiet_t")}</b><p>${t("empty_quiet_s")}</p><button class="btn" onclick="toast(t('toast_contacts'))">${t("btn_add_friends")}</button></div>
+      <div class="empty"><div class="eic">${ic("party",36)}</div><b>${t("empty_event_t")}</b><p>${t("empty_event_s")}</p><button class="btn sec" onclick="openCreate()">${t("btn_create_event")}</button></div>`;
   } else {
-    $("#feedBody").innerHTML=`<h3>Скоро у друзей</h3>`+feed.map(o=>card(o,o.ev?"go('event')":"toast('Демо: профиль друга')")).join("")
-      +`<h3>Мои события <span class="link" onclick="go('profile')">профиль →</span></h3>`+mine.map(o=>card(o,"go('event')")).join("");
+    $("#feedBody").innerHTML=`<h3>${t("h_soon")}</h3>`+feed.map(o=>evRow(o,o.ev?"go('event')":"toast(t('toast_friend'))")).join("")
+      +`<h3>${t("h_my_events")} <span class="link" onclick="go('profile')">${t("link_profile")} →</span></h3>`+mine.map(o=>evRow(o,"go('event')")).join("");
     renderCalendar();
   }
   // профиль
-  $("#pfAv").textContent=user.av; $("#acAv").textContent=user.av;
-  $("#pfName").textContent=user.name||"Имя"; $("#acName").textContent=user.name||"Имя";
-  $("#pfSub").textContent=(user.city||"Город")+(newU?"":" · 🎂 12 августа");
+  $("#pfAv").textContent=user.av||"S"; $("#acAv").textContent=user.av||"S";
+  $("#pfName").textContent=user.name||(newU?"":"Саги");
+  $("#pfSub").textContent=(user.city||"Алматы")+(newU?"":" · "+typeLabel("birthday")+": 12.08");
   $("#pfFriends").textContent=newU?0:48; $("#pfEvents").textContent=newU?0:mine.length; $("#pfWishes").textContent=wishes.length;
-  $("#pfWishBlock").innerHTML = wishes.length
-    ? `<div class="ev" onclick="go('wishlist')"><div class="emoji">🎁</div><div class="meta"><b>День рождения 2026</b><span>${wishes.length} позиций</span></div><span class="pill">→</span></div>`
-    : `<div class="empty"><div class="big">🎁</div><b>Вишлист пуст</b><p>Добавь желания — друзьям будет проще подарить нужное.</p><button class="btn" onclick="go('wishlist')">Создать вишлист</button></div>`;
-  // вишлист hero + note
-  $("#wishHeroSub").textContent = wishes.length? "День рождения 2026 · друзья резервируют незаметно для тебя":"Добавь то, что хочешь получить в подарок";
-  $("#wishSeg").style.display = wishes.length? "flex":"none";
-  $("#wishNote").style.display = wishes.length? "block":"none";
+  renderWishes();
   // уведомления
   $("#notifList").innerHTML = notifs.length
-    ? notifs.map(o=>`<div class="ev"><div class="emoji">${o.e}</div><div class="meta"><b style="font-weight:600;font-size:13px">${o.t}</b><span>${o.s}</span></div></div>`).join("")
-    : `<div class="empty"><div class="big">🔔</div><b>Уведомлений нет</b><p>Здесь появятся напоминания о днях рождения, ответы на приглашения и брони подарков.</p></div>`;
-  $("#bell").innerHTML = notifs.length? '🔔<span class="dot"></span>':'🔔';
-  renderWishes();
+    ? notifs.map(o=>`<div class="ev"><div class="ic">${ic(o.ic)}</div><div class="meta"><b style="font-weight:600;font-size:13px">${o.t}</b><span>${o.s}</span></div></div>`).join("")
+    : `<div class="empty"><div class="eic">${ic("bell",36)}</div><b>${t("n_empty_t")}</b><p>${t("n_empty_s")}</p></div>`;
+  $("#bell").innerHTML = ic("bell")+(notifs.length?'<span class="dot"></span>':'');
+  // событие
+  $("#evTitle").textContent="Девичник Камилы"; $("#evWhen").textContent=typeLabel("bachelorette")+" · 27 июня · 18:00";
+  $("#evDays").textContent="6 "+t("e_days");
+  $("#orgs").innerHTML=orgs.map(o=>`<div class="guest"><div class="gav">${o.n[0]}</div>${o.n}<span class="role">${t(o.r)}</span></div>`).join("");
+  $("#guests").innerHTML=guests.map(g=>`<div class="guest"><div class="gav">${g.n[0]}</div>${g.n}<span class="tag ${g.s}">${g.s=='yes'?t("e_will"):g.s=='no'?t("e_wont"):t("e_thinks")}</span></div>`).join("");
+  $("#checklist").innerHTML=checklist.map(c=>`<div class="guest"><span>${c.w}</span><span class="tag ${c.who=='—'?'maybe':'yes'}" style="margin-left:auto">${c.who}</span></div>`).join("");
+  $("#resources").innerHTML=[["pin","Карта · ул. Абая 10"],["folder","Google Drive · фото и видео"],["music","Плейлист вечера"],["video","Видеозвонок"]].map(r=>`<div class="ev" onclick="toast(t('toast_open'))"><div class="ic">${ic(r[0])}</div><div class="meta"><b>${r[1].split(' · ')[0]}</b><span>${r[1].split(' · ')[1]||''}</span></div><span class="pill">${t("e_open")}</span></div>`).join("");
+  $("#album").innerHTML=`<div style="display:flex;flex-wrap:wrap;gap:8px">`+[0,1,2,3,4,5].map(()=>`<div style="width:31%;aspect-ratio:1;border-radius:12px;background:#243149;display:flex;align-items:center;justify-content:center;color:var(--mut)">${ic("camera")}</div>`).join("")+`</div><div class="muted" style="margin-top:10px">${t("e_album_note")}</div>`;
+  $("#wall").innerHTML=[["Айдар","Буду точно!"],["Малика","Поздравляю! Торт за мной"],["Тимур","А дресс-код есть?"]].map(c=>`<div class="guest"><div class="gav">${c[0][0]}</div><div><b style="font-size:13px">${c[0]}</b><div class="muted">${c[1]}</div></div></div>`).join("")+`<input placeholder="${t("e_write")}" style="margin-top:12px;margin-bottom:0" onkeydown="if(event.key==='Enter'){toast(t('toast_msg'));this.value=''}">`;
+  $("#inviteFriends").innerHTML=friends.map(f=>`<span class="chip" onclick="this.classList.toggle('on')">${f}</span>`).join("");
 }
-
-// активности по дням июня 2026
-const calEvents={
-  24:{e:"🎂",t:"День рождения Айдара"},
-  27:{e:"🎂",t:"День рождения Малики"},
-  28:{e:"🏠",t:"Новоселье у Дианы",ev:true},
-};
-function feedView(el,v){
-  el.parentNode.querySelectorAll("button").forEach(b=>b.classList.remove("on"));el.classList.add("on");
-  $("#feedBody").style.display = v=='list'?'block':'none';
-  $("#feedCal").style.display = v=='cal'?'block':'none';
+function renderWishes(){
+  if(!wishes.length){
+    $("#wishItems").innerHTML=`<div class="empty"><div class="eic">${ic("gift",36)}</div><b>${t("pw_empty_t")}</b><p>${t("pw_empty_s")}</p></div>`;
+    $("#wishNote").style.display="none"; return;
+  }
+  $("#wishNote").style.display="block";
+  $("#wishNote").textContent = wishMode=="mine"? t("pw_note") : t("pw_friend_desc");
+  $("#wishItems").innerHTML=wishes.map((w,i)=>{
+    const body=`<div class="ic">${ic("gift")}</div>
+      <div class="meta"><b>${w.t}</b><span>${w.pr}${wishMode=="mine"?' · '+t(w.prio):''}</span>
+      ${w.joint?`<div class="progress"><i style="width:${w.collected}%"></i></div><span style="font-size:11px">${t("pw_joint")} · ${t("pw_collected")} ${w.collected}%</span>`:''}</div>`;
+    if(wishMode=="mine") return `<div class="wish ${w.res?'reserved':''}">${body}</div>`;
+    const act = w.res?`<span class="tag yes">${t("pw_occupied")}</span>`:w.joint?`<button class="btn tiny" onclick="chipIn(${i})">${t("pw_chip_in")}</button>`:`<button class="btn tiny" onclick="reserve(${i})">${t("pw_gift")}</button>`;
+    return `<div class="wish ${w.res?'reserved':''}">${body}${act}</div>`;
+  }).join("");
 }
 function renderCalendar(){
-  const y=2026,m=5,today=21,days=30; // июнь 2026
-  const dow=["Пн","Вт","Ср","Чт","Пт","Сб","Вс"];
-  const first=(new Date(y,m,1).getDay()+6)%7; // смещение для пн-первого
+  const today=21,days=30;
+  const first=(new Date(2026,5,1).getDay()+6)%7;
   let cells="";
   for(let i=0;i<first;i++)cells+=`<div class="calday empty"></div>`;
   for(let d=1;d<=days;d++){
     const ev=calEvents[d];
-    const cls="calday"+(d==today?" today":"")+(ev?" has":"");
-    const click=ev?(ev.ev?`onclick="go('event')"`:`onclick="toast('${ev.t}')"`):"";
-    cells+=`<div class="${cls}" ${click}><span class="num">${d}</span>${ev?`<span class="ev2">${ev.e}</span>`:""}</div>`;
+    cells+=`<div class="calday${d==today?' today':''}${ev?' has':''}" ${ev?`onclick="go('event')"`:''}>${d}${ev?'<span class="mk"></span>':''}</div>`;
   }
   const list=Object.keys(calEvents).sort((a,b)=>a-b).map(d=>{
-    const ev=calEvents[d];
-    return `<div class="ev" ${ev.ev?`onclick="go('event')"`:`onclick="toast('${ev.t}')"`}><div class="emoji">${ev.e}</div>
-      <div class="meta"><b>${ev.t}</b><span>${d} июня</span></div><span class="pill">${d-today>0?'через '+(d-today)+' дн.':''}</span></div>`;
+    const k=calEvents[d]=="cake"?"birthday":calEvents[d]=="briefcase"?"business_forum":"bachelorette";
+    return `<div class="ev" onclick="go('event')"><div class="ic">${ic(calEvents[d])}</div><div class="meta"><b>${typeLabel(k)}</b><span>${d}.06.2026</span></div></div>`;
   }).join("");
-  $("#feedCal").innerHTML=`
-    <div class="calhead"><span class="link" onclick="toast('Демо: предыдущий месяц')">‹</span><b>Июнь 2026</b><span class="link" onclick="toast('Демо: следующий месяц')">›</span></div>
-    <div class="calgrid">${dow.map(d=>`<div class="caldow">${d}</div>`).join("")}${cells}</div>
-    <h3>Активности месяца</h3>${list}`;
-}
-function renderWishes(){
-  if(!wishes.length){
-    $("#wishItems").innerHTML=`<div class="empty"><div class="big">🎁</div><b>Список желаний пуст</b><p>Добавь первое желание со ссылкой, ценой и приоритетом. Друзья смогут зарезервировать или скинуться.</p></div>`;
-    $("#wishFriendItems").innerHTML="";return;
-  }
-  $("#wishItems").innerHTML=wishes.map(w=>`<div class="wish ${w.res?'reserved':''}">
-    <div class="ph">${w.e}</div>
-    <div class="meta"><b>${w.t}</b><span>${w.pr} · ${w.prio}${w.note?' · '+w.note:''}</span>
-    ${w.joint?`<div class="progress"><i style="width:${w.collected}%"></i></div><span style="font-size:11px">Совместный · собрано ${w.collected}%</span>`:''}</div>
-  </div>`).join("");
-  $("#wishFriendItems").innerHTML=wishes.map((w,i)=>`<div class="wish ${w.res?'reserved':''}">
-    <div class="ph">${w.e}</div>
-    <div class="meta"><b>${w.t}</b><span>${w.pr}${w.note?' · '+w.note:''}</span>
-    ${w.joint?`<div class="progress"><i style="width:${w.collected}%"></i></div><span style="font-size:11px">Собрано ${w.collected}%</span>`:''}</div>
-    ${w.res?'<span class="tag yes">Занято</span>':w.joint?`<button class="btn tiny" onclick="chip_in(${i})">Вложиться</button>`:`<button class="btn tiny" onclick="reserve(${i})">Дарю это</button>`}
-  </div>`).join("");
+  $("#feedCal").innerHTML=`<div class="calhead"><span onclick="toast(t('toast_prevm'))">‹</span><b>${t("cal_month")}</b><span onclick="toast(t('toast_nextm'))">›</span></div>
+    <div class="calgrid">${t("weekdays").map(d=>`<div class="caldow">${d}</div>`).join("")}${cells}</div>
+    <h3>${t("cal_activities")}</h3>${list}`;
 }
 
-// статичные блоки события
-$("#guests").innerHTML=guests.map(g=>`<div class="guest"><div class="gav">${g.n[0]}</div>${g.n}
-  <span class="tag ${g.s}">${g.s=='yes'?'Придёт':g.s=='no'?'Не придёт':'Думает'}</span></div>`).join("");
-$("#checklist").innerHTML=checklist.map(c=>`<div class="guest"><span>${c.w}</span>
-  <span class="tag ${c.who=='свободно'?'maybe':'yes'}" style="margin-left:auto">${c.who}</span></div>`).join("");
-$("#inviteFriends").innerHTML=friends.map(f=>`<span class="chip" onclick="this.classList.toggle('on')">${f}</span>`).join("");
-$("#resources").innerHTML=resources.map(r=>`<div class="ev" onclick="toast('Демо: открыть ${r.a}')"><div class="emoji">${r.e}</div><div class="meta"><b>${r.t}</b><span>${r.s}</span></div><span class="pill">открыть</span></div>`).join("");
-$("#album").innerHTML=`<div style="display:flex;flex-wrap:wrap;gap:8px">`+album.map(p=>`<div style="width:31%;aspect-ratio:1;border-radius:12px;background:#243149;display:flex;align-items:center;justify-content:center;font-size:30px">${p}</div>`).join("")+`</div><div class="muted" style="margin-top:10px">Гости загружают фото после события — все воспоминания в одном месте.</div>`;
-$("#wall").innerHTML=wall.map(c=>`<div class="guest"><div class="gav">${c.n[0]}</div><div><b style="font-size:13px">${c.n}</b><div class="muted">${c.m}</div></div></div>`).join("")+`<input placeholder="Написать пожелание или вопрос..." style="margin-top:12px;margin-bottom:0" onkeydown="if(event.key==='Enter'){toast('Демо: сообщение отправлено');this.value=''}">`;
-
-// ---------- навигация ----------
-function go(s,el){
-  document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
-  $("#"+s).classList.add("active");
-  document.querySelectorAll(".tab").forEach(tb=>tb.classList.toggle("on",tb.dataset.s===s));
-  window.scrollTo(0,0);
-}
-
-// ---------- онбординг ----------
+// ---------- навигация / действия ----------
+function go(s,el){$$(".screen").forEach(x=>x.classList.remove("active"));$("#"+s).classList.add("active");$$(".tab").forEach(tb=>tb.classList.toggle("on",tb.dataset.s===s));window.scrollTo(0,0)}
+function feedView(el,v){el.parentNode.querySelectorAll("button").forEach(b=>b.classList.remove("on"));el.classList.add("on");$("#feedBody").style.display=v=='list'?'block':'none';$("#feedCal").style.display=v=='cal'?'block':'none'}
+function toggleWishMode(){wishMode=wishMode=="mine"?"friend":"mine";$("#wishToggle").textContent=wishMode=="mine"?t("pw_friend_view"):t("pw_my_list");$("#addWishBtn").style.display=wishMode=="mine"?"flex":"none";renderWishes()}
+function pickType(el){el.parentNode.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));el.classList.add("on")}
 function setMode(isNew){user.isNew=isNew;$("#dmNew").classList.toggle("on",isNew);$("#dmActive").classList.toggle("on",!isNew)}
-function startOnboarding(){
-  setMode(true);
-  feed=[];mine=[];wishes=[];notifs=[];
-  user={name:"",city:"",av:"🙂",isNew:true};
-  ostep(1);$("#onb").classList.add("show");
-}
-function ostep(n){document.querySelectorAll(".ostep").forEach(x=>x.classList.remove("active"));$("#o"+n).classList.add("active");$(".onb").scrollTop=0}
-function saveProfile(){
-  user.name=$("#obName").value||"Друг"; user.city=$("#obCity").value||"Алматы";
-  user.av=(user.name.trim()[0]||"🙂").toUpperCase();
-  renderAll(); ostep(3);
-}
-function finishOnboarding(){
-  $("#onb").classList.remove("show");
-  renderAll(); go("feed");
-  document.querySelector('.tab[data-s=feed]').classList.add('on');
-  toast("Добро пожаловать в Sagi Events 🎉");
-}
-function loadActive(){
-  setMode(false);
-  $("#onb").classList.remove("show");
-  user={name:"Саги",city:"Алматы",av:"С",isNew:false};
-  feed=[...D.feed];mine=[...D.mine];wishes=JSON.parse(JSON.stringify(D.wishes));notifs=[...D.notifs];
-  renderAll(); go("feed");
-}
-function logout(){
-  close_("mAccount");
-  startOnboarding();
-  toast("Ты вышел из аккаунта");
-}
-
-// ---------- действия ----------
+function startOnboarding(){setMode(true);feed=[];mine=[];wishes=[];notifs=[];user={name:"",city:"",av:"",isNew:true};wishMode="mine";applyI18n();renderAll();ostep(1);$("#onb").classList.add("show")}
+function ostep(n){$$(".ostep").forEach(x=>x.classList.remove("active"));$("#o"+n).classList.add("active");$(".onb").scrollTop=0}
+function saveProfile(){user.name=$("#obName").value||t("ob_name_ph");user.city=$("#obCity").value||"Алматы";user.av=(user.name.trim()[0]||"S").toUpperCase();renderAll();ostep(3)}
+function finishOnboarding(){$("#onb").classList.remove("show");applyI18n();renderAll();go("feed");document.querySelector('.tab[data-s=feed]').classList.add('on');toast(t("toast_welcome"))}
+function loadActive(){setMode(false);$("#onb").classList.remove("show");user={name:"Саги",city:"Алматы",av:"С",isNew:false};feed=[...D.feed];mine=[...D.mine];wishes=JSON.parse(JSON.stringify(D.wishes));notifs=[...D.notifs];applyI18n();renderAll();go("feed")}
+function logout(){close_("mAccount");startOnboarding();toast(t("toast_logout"))}
 function createEvent(){close_("mCreate");open_("mInvite")}
-function rsvp(el,v){el.parentNode.querySelectorAll("button").forEach(b=>b.classList.remove("on"));el.classList.add("on");toast("Ответ записан: "+v)}
-function wishView(el,v){el.parentNode.querySelectorAll("button").forEach(b=>b.classList.remove("on"));el.classList.add("on");
-  $("#wishMine").style.display=v=='mine'?'block':'none';$("#wishFriend").style.display=v=='friend'?'block':'none';}
-function reserve(i){wishes[i].res=true;renderWishes();toast("Ты зарезервировал подарок 🤫 Именинник не увидит")}
-function chip_in(i){wishes[i].collected=Math.min(100,wishes[i].collected+15);renderWishes();toast("Ты вложился в общий подарок 💰")}
-function addWish(){
-  const n=$("#addName").value||"Новое желание";
-  wishes.unshift({e:"✨",t:n,pr:($("#addPrice").value||"—")+" ₸",prio:$("#addPrio").value,note:$("#addNote").value,res:false,joint:$("#addJoint").checked,collected:0});
-  ["addName","addPrice","addNote","addLink"].forEach(id=>$("#"+id).value="");$("#addJoint").checked=false;
-  close_("mAdd");renderAll();go("wishlist");toast("Желание добавлено 🎁")
-}
-document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)m.classList.remove("show")}));
-document.querySelectorAll("#evTypes .chip").forEach(c=>c.onclick=()=>{document.querySelectorAll("#evTypes .chip").forEach(x=>x.classList.remove("on"));c.classList.add("on")});
-document.querySelectorAll("#resTypes .chip").forEach(c=>c.onclick=()=>c.classList.toggle("on"));
+function rsvp(el,v){el.parentNode.querySelectorAll("button").forEach(b=>b.classList.remove("on"));el.classList.add("on");toast(v)}
+function reserve(i){wishes[i].res=true;renderWishes();toast(t("toast_reserved"))}
+function chipIn(i){wishes[i].collected=Math.min(100,wishes[i].collected+15);renderWishes();toast(t("toast_chipin"))}
+function addWish(){const n=$("#addName").value||t("aw_name_ph");wishes.unshift({ty:"gift",t:n,pr:($("#addPrice").value||"—")+" ₸",prio:$("#addPrio").selectedIndex==0?"aw_prio1":$("#addPrio").selectedIndex==1?"aw_prio2":"aw_prio3",note:$("#addNote").value,res:false,joint:$("#addJoint").checked,collected:0});["addName","addPrice","addNote","addLink"].forEach(id=>$("#"+id).value="");$("#addJoint").checked=false;close_("mAdd");renderAll();toast(t("toast_added"))}
+$$(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)m.classList.remove("show")}));
 
-// ---------- старт: показываем нового пользователя ----------
+// старт
+applyI18n();
 startOnboarding();
 </script>
 </body>
