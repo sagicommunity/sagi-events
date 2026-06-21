@@ -152,10 +152,6 @@
     <div class="dots"><i class="on"></i><i></i><i></i></div>
     <h2 style="margin-bottom:4px">Создай профиль</h2>
     <p class="muted" style="margin-bottom:18px">Так друзья тебя узнают</p>
-    <label>Выбери аватар</label>
-    <div class="av-pick" id="avPick">
-      <div class="on">🙂</div><div>😎</div><div>🦊</div><div>🐱</div><div>🚀</div><div>🌟</div><div>🎈</div><div>👑</div>
-    </div>
     <label>Имя</label><input id="obName" placeholder="Как тебя зовут">
     <label>Город</label><input id="obCity" placeholder="Алматы">
     <button class="btn" onclick="saveProfile()">Дальше</button>
@@ -564,9 +560,9 @@ function startOnboarding(){
   ostep(1);$("#onb").classList.add("show");
 }
 function ostep(n){document.querySelectorAll(".ostep").forEach(x=>x.classList.remove("active"));$("#o"+n).classList.add("active");$(".onb").scrollTop=0}
-document.querySelectorAll("#avPick div").forEach(d=>d.onclick=()=>{document.querySelectorAll("#avPick div").forEach(x=>x.classList.remove("on"));d.classList.add("on");user.av=d.textContent});
 function saveProfile(){
   user.name=$("#obName").value||"Друг"; user.city=$("#obCity").value||"Алматы";
+  user.av=(user.name.trim()[0]||"🙂").toUpperCase();
   renderAll(); ostep(3);
 }
 function finishOnboarding(){
