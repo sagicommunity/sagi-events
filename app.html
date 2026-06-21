@@ -6,14 +6,14 @@
 <title>Sagi Events — прототип</title>
 <style>
   :root{
-    --bg:#0f1020; --card:#1a1c33; --card2:#222542; --line:#2c2f52;
-    --txt:#eef0ff; --mut:#9aa0c8; --accent:#7c6cff; --accent2:#ff7a9c;
+    --bg:#0f1420; --card:#161c2b; --card2:#1e2636; --line:#2a3346;
+    --txt:#eef2f8; --mut:#94a0b4; --accent:#4f7cf0; --accent2:#14b8a6;
     --ok:#36d399; --warn:#ffcf5c; --radius:18px; color-scheme:dark;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    background:radial-gradient(1200px 600px at 80% -10%,#241b4a 0,transparent 60%),
-    radial-gradient(900px 500px at -10% 20%,#33214a 0,transparent 55%),var(--bg);
+    background:radial-gradient(1200px 600px at 80% -10%,#16243f 0,transparent 60%),
+    radial-gradient(900px 500px at -10% 20%,#123a37 0,transparent 55%),var(--bg);
     color:var(--txt);min-height:100vh;display:flex;justify-content:center;padding:24px 12px 90px}
   .shell{width:100%;max-width:430px}
   .topbar{display:flex;align-items:center;justify-content:space-between;padding:6px 6px 14px}
@@ -26,7 +26,7 @@
   .screen.active{display:block}
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:14px}
-  .hero{position:relative;border-radius:24px;overflow:hidden;padding:22px;background:linear-gradient(135deg,#7c6cff,#ff7a9c);margin-bottom:16px}
+  .hero{position:relative;border-radius:24px;overflow:hidden;padding:22px;background:linear-gradient(135deg,#4f7cf0,#14b8a6);margin-bottom:16px}
   .hero h2{font-size:22px}
   .hero p{opacity:.9;font-size:13px;margin-top:4px}
   .avatar{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;background:rgba(255,255,255,.25);border:2px solid rgba(255,255,255,.5)}
@@ -38,15 +38,15 @@
   h3 .link{font-size:12px;color:var(--accent);cursor:pointer;font-weight:600}
   .ev{display:flex;gap:12px;align-items:center;padding:12px;border-radius:14px;background:var(--card2);margin-bottom:10px;cursor:pointer;border:1px solid transparent;transition:.15s}
   .ev:hover{border-color:var(--accent)}
-  .emoji{width:46px;height:46px;border-radius:12px;background:#2e3160;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+  .emoji{width:46px;height:46px;border-radius:12px;background:#243149;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
   .ev .meta{flex:1;min-width:0}
   .ev .meta b{font-size:14px}
   .ev .meta span{font-size:12px;color:var(--mut);display:block}
-  .pill{font-size:11px;padding:4px 9px;border-radius:20px;background:#312a63;color:#cabfff;white-space:nowrap}
-  .pill.soon{background:#5a2740;color:#ffc0d2}
+  .pill{font-size:11px;padding:4px 9px;border-radius:20px;background:#243149;color:#aecbf2;white-space:nowrap}
+  .pill.soon{background:#3a3a20;color:#ecd58a}
   .btn{display:block;width:100%;text-align:center;padding:13px;border-radius:14px;border:none;font-size:14px;font-weight:700;cursor:pointer;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;margin-top:6px}
   .btn.sec{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
-  .btn.danger{background:transparent;color:#ff8fa6;border:1px solid #5a2740}
+  .btn.danger{background:transparent;color:#ff8fa6;border:1px solid #5a3030}
   .btn.tiny{display:inline-block;width:auto;padding:8px 14px;font-size:12px;margin:0}
   input,select,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card2);color:var(--txt);font-size:14px;font-family:inherit;margin-bottom:10px}
   label{font-size:12px;color:var(--mut);margin:2px 2px 6px;display:block}
@@ -54,13 +54,13 @@
   .seg button{flex:1;border:none;background:transparent;color:var(--mut);padding:8px;border-radius:9px;font-size:12px;font-weight:600;cursor:pointer}
   .seg button.on{background:var(--accent);color:#fff}
   .wish{display:flex;gap:12px;padding:12px;border-radius:14px;background:var(--card2);margin-bottom:10px;align-items:center}
-  .wish .ph{width:50px;height:50px;border-radius:11px;background:#2e3160;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+  .wish .ph{width:50px;height:50px;border-radius:11px;background:#243149;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
   .wish .meta{flex:1;min-width:0}
   .wish .meta b{font-size:14px}
   .wish .meta span{font-size:12px;color:var(--mut)}
   .reserved{opacity:.55}
   .reserved .meta b{text-decoration:line-through}
-  .progress{height:7px;border-radius:5px;background:#2e3160;overflow:hidden;margin-top:7px}
+  .progress{height:7px;border-radius:5px;background:#243149;overflow:hidden;margin-top:7px}
   .progress i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
   .empty{text-align:center;padding:30px 18px;border:1.5px dashed var(--line);border-radius:18px;margin-bottom:14px}
   .empty .big{font-size:40px;margin-bottom:10px}
@@ -72,7 +72,7 @@
   .tab .ic{font-size:20px;display:block;margin-bottom:2px;filter:grayscale(1) opacity(.7)}
   .tab.on{color:var(--accent)}
   .tab.on .ic{filter:none}
-  .fab{position:fixed;bottom:78px;left:50%;transform:translateX(calc(215px - 100%));width:56px;height:56px;border-radius:50%;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:28px;cursor:pointer;box-shadow:0 8px 24px rgba(124,108,255,.5);z-index:9}
+  .fab{position:fixed;bottom:78px;left:50%;transform:translateX(calc(215px - 100%));width:56px;height:56px;border-radius:50%;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:28px;cursor:pointer;box-shadow:0 8px 24px rgba(79,124,240,.45);z-index:9}
   .modal{position:fixed;inset:0;background:rgba(8,8,18,.7);display:none;align-items:flex-end;justify-content:center;z-index:50}
   .modal.show{display:flex}
   .sheet{width:100%;max-width:430px;background:var(--card);border-radius:24px 24px 0 0;padding:20px;max-height:88vh;overflow:auto;animation:up .25s ease}
@@ -80,10 +80,10 @@
   .sheet .grab{width:40px;height:4px;border-radius:3px;background:var(--line);margin:0 auto 16px}
   .chip{display:inline-block;padding:6px 12px;border-radius:20px;background:var(--card2);border:1px solid var(--line);font-size:12px;margin:0 6px 8px 0;cursor:pointer}
   .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
-  .toast{position:fixed;bottom:150px;left:50%;transform:translateX(-50%) translateY(20px);background:#2a2d52;border:1px solid var(--accent);color:#fff;padding:12px 18px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition:.3s;z-index:99;max-width:90%;text-align:center}
+  .toast{position:fixed;bottom:150px;left:50%;transform:translateX(-50%) translateY(20px);background:#1e2942;border:1px solid var(--accent);color:#fff;padding:12px 18px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition:.3s;z-index:99;max-width:90%;text-align:center}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
   .guest{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
-  .gav{width:34px;height:34px;border-radius:50%;background:#2e3160;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+  .gav{width:34px;height:34px;border-radius:50%;background:#243149;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
   .tag{font-size:10px;padding:3px 8px;border-radius:8px;margin-left:auto}
   .tag.yes{background:#16412f;color:var(--ok)}
   .tag.no{background:#45222c;color:#ff9fb2}
@@ -92,8 +92,8 @@
   .note{font-size:11px;color:var(--mut);background:var(--card2);border-radius:10px;padding:9px 11px;margin-top:8px}
   /* онбординг */
   .onb{position:fixed;inset:0;z-index:200;display:none;background:
-    radial-gradient(900px 500px at 80% 0,#3a2570 0,transparent 60%),
-    radial-gradient(700px 500px at 0 100%,#5a2a4d 0,transparent 55%),var(--bg);
+    radial-gradient(900px 500px at 80% 0,#16243f 0,transparent 60%),
+    radial-gradient(700px 500px at 0 100%,#123a37 0,transparent 55%),var(--bg);
     overflow:auto;padding:30px 22px;justify-content:center}
   .onb.show{display:flex}
   .onb .inner{width:100%;max-width:400px;margin:auto;text-align:center}
@@ -105,7 +105,7 @@
   .feat b{font-size:14px}.feat span{font-size:12px;color:var(--mut)}
   .av-pick{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:12px}
   .av-pick div{width:46px;height:46px;border-radius:50%;background:var(--card2);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer}
-  .av-pick div.on{border-color:var(--accent);background:#312a63}
+  .av-pick div.on{border-color:var(--accent);background:#243149}
   .dots{display:flex;gap:6px;justify-content:center;margin:18px 0}
   .dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}
   .dots i.on{background:var(--accent);width:20px;border-radius:4px}
@@ -229,7 +229,7 @@
 
   <!-- ====== ВИШЛИСТ ====== -->
   <div id="wishlist" class="screen">
-    <div class="hero" style="background:linear-gradient(135deg,#ff7a9c,#7c6cff)">
+    <div class="hero" style="background:linear-gradient(135deg,#14b8a6,#4f7cf0)">
       <h2>🎁 Мой вишлист</h2>
       <p id="wishHeroSub">Добавь то, что хочешь получить в подарок</p>
     </div>
@@ -250,7 +250,7 @@
 
   <!-- ====== СОБЫТИЕ ====== -->
   <div id="event" class="screen">
-    <div class="hero" style="background:linear-gradient(135deg,#36d399,#7c6cff)">
+    <div class="hero" style="background:linear-gradient(135deg,#36d399,#4f7cf0)">
       <h2 id="evTitle">🎉 Новоселье у Дианы</h2>
       <p id="evWhen">Сб, 28 июня · 19:00 · ул. Абая 10</p>
     </div>
@@ -540,7 +540,7 @@ $("#checklist").innerHTML=checklist.map(c=>`<div class="guest"><span>${c.w}</spa
   <span class="tag ${c.who=='свободно'?'maybe':'yes'}" style="margin-left:auto">${c.who}</span></div>`).join("");
 $("#inviteFriends").innerHTML=friends.map(f=>`<span class="chip" onclick="this.classList.toggle('on')">${f}</span>`).join("");
 $("#resources").innerHTML=resources.map(r=>`<div class="ev" onclick="toast('Демо: открыть ${r.a}')"><div class="emoji">${r.e}</div><div class="meta"><b>${r.t}</b><span>${r.s}</span></div><span class="pill">открыть</span></div>`).join("");
-$("#album").innerHTML=`<div style="display:flex;flex-wrap:wrap;gap:8px">`+album.map(p=>`<div style="width:31%;aspect-ratio:1;border-radius:12px;background:#2e3160;display:flex;align-items:center;justify-content:center;font-size:30px">${p}</div>`).join("")+`</div><div class="muted" style="margin-top:10px">Гости загружают фото после события — все воспоминания в одном месте.</div>`;
+$("#album").innerHTML=`<div style="display:flex;flex-wrap:wrap;gap:8px">`+album.map(p=>`<div style="width:31%;aspect-ratio:1;border-radius:12px;background:#243149;display:flex;align-items:center;justify-content:center;font-size:30px">${p}</div>`).join("")+`</div><div class="muted" style="margin-top:10px">Гости загружают фото после события — все воспоминания в одном месте.</div>`;
 $("#wall").innerHTML=wall.map(c=>`<div class="guest"><div class="gav">${c.n[0]}</div><div><b style="font-size:13px">${c.n}</b><div class="muted">${c.m}</div></div></div>`).join("")+`<input placeholder="Написать пожелание или вопрос..." style="margin-top:12px;margin-bottom:0" onkeydown="if(event.key==='Enter'){toast('Демо: сообщение отправлено');this.value=''}">`;
 
 // ---------- навигация ----------
